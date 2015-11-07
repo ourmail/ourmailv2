@@ -83,6 +83,7 @@ $message_html = <<<EOT
                                 <td style="width:15px;">&nbsp;</td>
                                 <td style="width:180px;padding:0 0 0 0;">
                                     {$sendDate}<button data-messageid="{$messageid}" class="removemessage"> delete </button>
+                                    <button data-messageid="{$messageid}" class="markread"> Mark as Read </button>
                                 </td>
                                 <td style="width:15px;">&nbsp;</td>
                             </tr>

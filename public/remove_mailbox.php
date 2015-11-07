@@ -24,6 +24,6 @@ $r=$ctxio->deleteSource($contextid, array(
 if ($r === false) {
     throw new exception("Unable to delete Source.");
 }
-    $returnArray = array('removedlabel' => $label);
+    $returnArray = array('removedlabel' => true);
 	echo json_encode($returnArray);
 ?>

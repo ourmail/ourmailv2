@@ -14,12 +14,13 @@ define('CONSUMER_SECRET', '0OuLf0mllrvwaPAQ');
 $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
 
 //Delete Source
-$r=$ctxio->deleteMessage($contextid, array(
+$r=$ctxio->setMessageFlags($contextid, array(
     'message_id' =>  $messageid,
+	'seen' => true
 ));
 if ($r === false) {
-    throw new exception("Unable to delete message.");
+    throw new exception("Unable to mark message as read.");
 }
-    $returnArray = array('removedmessage' => true);
+    $returnArray = array('markedAsRead' => true);
 	echo json_encode($returnArray);
 ?>

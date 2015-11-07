@@ -38,4 +38,34 @@ $(function() {
 			}
         });
 	});
+	
+	$(".markread").on('click', function(event){
+		
+		console.log("Attempting to mark message as read");
+		
+		var myobject={
+			'messageid' : $(this).attr('data-messageid')	
+		};
+		
+		$seentag=$(this).parent().prev().prev();
+		
+		$.ajax({
+        	type: 'POST',
+            url: 'mark_read.php',
+            data: myobject,
+            async: false,
+            success: function(data) {
+				console.log(data);
+				console.log("Mark read successful");
+				
+				
+				$seentag.removeClass("unseen");	
+				$seentag.addClass("seen");	
+				console.log("Marked as read");
+            },
+			error: function(error){
+				console.log("Could not mark message as read.");
+			}
+        });
+	});
 });
