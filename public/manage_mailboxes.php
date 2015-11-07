@@ -44,9 +44,11 @@ echo $output;
 }
 				
 ?>
-			<a href="connect_token.php">
-				<li id="addmailbox"> Add new mailbox </li>
-			</a>	
+			
+			<li id="addmailbox"> <a href="connect_token.php">Add new mailbox</a> </li>
+				
+			<li><a href="dashboard.php">Dashboard</a></li>
+			
 			<li id="logout">
 				Logout
 			</li>
