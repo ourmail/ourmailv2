@@ -8,7 +8,7 @@ require_once 'PHP-ContextIO/class.contextio.php';
 //API Key and Secret. Found in the context IO Developers Settings
 define('CONSUMER_KEY', 'ru1j2q2s');
 define('CONSUMER_SECRET', '0OuLf0mllrvwaPAQ');
-define('CALLBACK', 'https://google.com');
+define('CALLBACK', 'hundal.koding.io/manage_mailboxes.php');
 
 //Instantiate the contextio object
 $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
