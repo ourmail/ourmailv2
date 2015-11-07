@@ -1,15 +1,11 @@
-<?php
-require 'parse-php-sdk/autoload.php';
-?>
-
 <!DOCTYPE html>
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Calm breeze login screen</title>
+    <title>Login to Ourmail</title>
     
     
-    
+    <script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script> 
     
         <link rel="stylesheet" href="css/login-style.css">
 
@@ -24,9 +20,9 @@ require 'parse-php-sdk/autoload.php';
 	<div class="container">
 		<h1>Welcome</h1>
 		
-		<form class="form">
-			<input type="text" placeholder="Username">
-			<input type="password" placeholder="Password">
+		<form id="login">
+			<input id="username" type="text" placeholder="Username">
+			<input id="password" type="password" placeholder="Password">
 			<button type="submit" id="login-button">Login</button>
 		</form>
 	</div>

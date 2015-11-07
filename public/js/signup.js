@@ -8,11 +8,11 @@ $(function() {
 	function displayCurrentUser() {
 		if (Parse.User.current()) {
 			console.log("Logged in by "+Parse.User.current().get("username"));
-			$("#current-user").html("Current User is "+Parse.User.current().get("username"));
+			Parse.User.logOut();
+			console.log("Logged out now");
 		}
 		else {
 			console.log("Logged in by no one.");
-			$("#current-user").html("Current User is no one.");
 		}
 	}
 	
@@ -22,16 +22,22 @@ $(function() {
 	$("#signup").submit(function(event){
 		event.preventDefault();
 
-        var $username = $('#username');
+        var $username = $('#username').val();
+		var $password = $('#password').val();
+		var $email = $('#email').val();
+		
+		var myobject= {
+			email: $email,
+		};
 
 		var newUser = new Parse.User();
 		newUser.set("username", $("#username").val());
 		newUser.set("password", $("#password").val());
-		newUser.set("email", $("#signupEmail").val());
+		newUser.set("email", $("#email").val());
         $.ajax({
               type: 'POST',
               url: 'signup_context.php',
-              data: $username,
+              data: myobject,
               async:false,
               success: function(contextid) {
 				  console.log(contextid);
@@ -44,7 +50,7 @@ $(function() {
 	            $('#signup').fadeOut(500);
 	            $('.wrapper').addClass('form-success');
 				Parse.User.logOut();
-				//window.location.replace('login.php'); // go to index page for login
+				window.location.replace('login.php'); // go to index page for login
 			},
 			error: function(newUser, error) {
 				alert("Parse Error(" + error.code + "): " + error.message);

@@ -1,8 +1,3 @@
-<?php
-require 'parse-php-sdk/autoload.php';
-var_dump($_POST);
-?>
-
 <!DOCTYPE html>
 <html >
   <head>
