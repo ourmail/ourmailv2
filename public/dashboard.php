@@ -48,7 +48,7 @@ function print_all_mailboxes($accounts){
 }
 
 // This function takes in a message object and prints it to the screen
-function print_message($message){
+function print_message($message,$unseen){
 
 $senderName=$message['addresses']['from']['name'];
 $subject=$message['subject'];
@@ -63,19 +63,25 @@ elseif (count($message['body'])==1){
 else{
     $body="No Body";
 }
+if($unseen === false){
+    $seen_status="seen";
+}
+elseif($unseen === true ){
+    $seen_status="unseen";
+}
 
 $message_html = <<<EOT
                     
                         <table class="mailtable" border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
                             <tr>
                                 <td colspan="5" style="padding:15px 0;">
-                                    <h1 style="color:#000;font-size:24px;padding:0 15px;margin:0;">{$senderName}</h1>
+                                    <h1 style="color:#000;font-size:24px;padding:0 15px;margin:0;">From: {$senderName}</h1>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width:15px;">&nbsp;</td>
-                                <td style="width:375px;">
-                                    {$subject}
+                                <td class="$seen_status" style="width:375px;">
+                                    Subject: {$subject}
                                 </td>
                                 <td style="width:15px;">&nbsp;</td>
                                 <td style="width:180px;padding:0 0 0 0;">
@@ -93,9 +99,9 @@ echo $message_html;
 }
 
 // This function takes list of message objects and prints them all
-function print_all_messages($msgsd){
+function print_all_messages($msgsd,$unseen=false){
     foreach($msgsd as $msg){
-        print_message($msg);
+        print_message($msg,$unseen);
     }
 }
 
@@ -106,17 +112,29 @@ function get_messages_and_print($label,$folder){
     global $imapinfo;
     global $contextid;
 
-    // Get Messages
+    // Get Unread Messages
     $msgs=$ctxio->listMessagesBySourceAndFolder($contextid,array(
         'label' => $label,
         'folder' => $folder,
         'include_body' => '1',
-        
+        'flag_seen' => '0' 
     ));
     if ($msgs === false) {
         throw new exception("Unable to fetch messages");
     }
-    // Get messages Data
+    $msgsd=$msgs->getData();
+    print_all_messages($msgsd,true);
+    
+    // Get Read Messages
+    $msgs=$ctxio->listMessagesBySourceAndFolder($contextid,array(
+        'label' => $label,
+        'folder' => $folder,
+        'include_body' => '1',
+        'flag_seen' => 1
+    ));
+    if ($msgs === false) {
+        throw new exception("Unable to fetch messages");
+    }
     $msgsd=$msgs->getData();
     print_all_messages($msgsd);
 }

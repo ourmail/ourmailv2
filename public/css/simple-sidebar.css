@@ -8,6 +8,15 @@
     display:none;
 }
 
+.seen{
+    
+}
+
+.unseen{
+    font-weight: bold;
+    color: darkred;
+}
+
 * Toggle Styles */
 #wrapper {
     padding-left: 0;
