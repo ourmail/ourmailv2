@@ -43,7 +43,7 @@
               		type: 'POST',
               		url: 'set_up_session.php',
               		data: myobject,
-              		async:false,
+              		async: false,
               		success: function(data) {
 						console.log(data);
 				  		console.log("Session set up successful");

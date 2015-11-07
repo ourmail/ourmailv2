@@ -20,7 +20,10 @@ function buildImapInfo(&$imapinfo, $ctxio, $contextid){
 
         //Get Current Account Label
         $label=$source['label'];
+        $email=$source['username'];
+        
         $account['label']=$label;
+        $account['email']=$email;
         $account['folders']=array();
 
         //Get mail account folders.

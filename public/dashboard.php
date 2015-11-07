@@ -45,6 +45,7 @@ function print_all_mailboxes($accounts){
 function print_message($message,$unseen){
 
 $senderName=$message['addresses']['from']['name'];
+//$senderEmail="hundal@hundal.com";
 $subject=$message['subject'];
 $sendTimeSeconds=$message['date'];
 $sendDate=date('Y/m/d H:i:s', $sendTimeSeconds);
@@ -77,7 +78,7 @@ $message_html = <<<EOT
                             </tr>
                             <tr>
                                 <td style="width:15px;">&nbsp;</td>
-                                <td class="$seen_status" style="width:375px;">
+                                <td class="$seen_status seen_stat" style="width:375px;">
                                     <span class="mailtable">Subject: {$subject}</span>
                                 </td>
                                 <td style="width:15px;">&nbsp;</td>
