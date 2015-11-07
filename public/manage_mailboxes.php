@@ -27,16 +27,16 @@ if(!isset($_SESSION['userauth']) or ($_SESSION['userauth']) != true) {
 		<br />
 		<ul>
 			<a href="connect_token.php">
-				<div>
-					<li id="addmailbox"> Add new mailbox </li>
-				</div>
+				<li id="addmailbox"> Add new mailbox </li>
 			</a>	
+			<li id="logout">
+				Logout
+			</li>
 		</ul>
 	</div>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-
-    
+    <script src="js/manage_mailboxes.js"></script>
     
     
   </body>
