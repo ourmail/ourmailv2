@@ -54,9 +54,19 @@ $senderName=$message['addresses']['from']['name'];
 $subject=$message['subject'];
 $sendTimeSeconds=$message['date'];
 $sendDate=date('Y/m/d H:i:s', $sendTimeSeconds);
+if (count($message['body'])==2){
+    $body=$message['body']['1']['content'];
+}
+elseif (count($message['body'])==1){
+    $body=$message['body']['0']['content'];
+}
+else{
+    $body="No Body";
+}
 
 $message_html = <<<EOT
-                        <table border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
+                    
+                        <table class="mailtable" border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
                             <tr>
                                 <td colspan="5" style="padding:15px 0;">
                                     <h1 style="color:#000;font-size:24px;padding:0 15px;margin:0;">{$senderName}</h1>
@@ -74,6 +84,9 @@ $message_html = <<<EOT
                                 <td style="width:15px;">&nbsp;</td>
                             </tr>
                         </table>
+                        <div class="hidden mailmessage">
+                            $body
+                        </div>
 EOT;
 
 echo $message_html;
@@ -97,6 +110,8 @@ function get_messages_and_print($label,$folder){
     $msgs=$ctxio->listMessagesBySourceAndFolder($contextid,array(
         'label' => $label,
         'folder' => $folder,
+        'include_body' => '1',
+        
     ));
     if ($msgs === false) {
         throw new exception("Unable to fetch messages");
@@ -198,10 +213,10 @@ $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    
+    <!-- Dashboard Script -->
+    <script src="js/dashboard.js"></script>
 
     <!-- Menu Toggle Script -->
 <script>
