@@ -1,8 +1,12 @@
 <?php
 session_start();
-
 if(!isset($_SESSION['userauth']) or ($_SESSION['userauth']) != true) {
 	header("Location: login.php");
+	die();
+}
+
+if(isset($_SESSION['recache'])){
+	header("Location: update_imap_info.php");
 	die();
 }
 ?>
@@ -26,6 +30,20 @@ if(!isset($_SESSION['userauth']) or ($_SESSION['userauth']) != true) {
 		<h1>Manage your mailboxes</h1>
 		<br />
 		<ul>
+<?php
+
+$imapinfo=$_SESSION['imapinfo'];
+
+foreach($imapinfo as $mailbox){
+$output = <<<EOL
+	<li>
+		{$mailbox['label']} <button data-label="{$mailbox['label']}" class="remove">delete</button>
+	</li>
+EOL;
+echo $output;
+}
+				
+?>
 			<a href="connect_token.php">
 				<li id="addmailbox"> Add new mailbox </li>
 			</a>	
