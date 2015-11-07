@@ -15,16 +15,10 @@ function print_folder($folder,$label){
 //This function prints a mailbox to the side navbar. It call print_folder to print folders contained in a mailbox.
 function print_mailbox($account){
     $label=$account['label'];
-
-/*$output = <<<EOL
-<li>
-    $label
-<ul class="sidebar-brand">
-EOL */  
-
+ 
 $output = <<<EOL
     <li>
-        $label
+        $labels
     <ul class="sidebar-brand">
 EOL;
     
@@ -54,6 +48,8 @@ $senderName=$message['addresses']['from']['name'];
 $subject=$message['subject'];
 $sendTimeSeconds=$message['date'];
 $sendDate=date('Y/m/d H:i:s', $sendTimeSeconds);
+$messageid=$message['message_id'];
+
 if (count($message['body'])==2){
     $body=$message['body']['1']['content'];
 }
@@ -72,7 +68,8 @@ elseif($unseen === true ){
 
 $message_html = <<<EOT
                     
-                        <table class="mailtable" border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
+                        
+                        <table border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
                             <tr>
                                 <td colspan="5" style="padding:15px 0;">
                                     <h1 style="color:#000;font-size:24px;padding:0 15px;margin:0;">From: {$senderName}</h1>
@@ -81,11 +78,11 @@ $message_html = <<<EOT
                             <tr>
                                 <td style="width:15px;">&nbsp;</td>
                                 <td class="$seen_status" style="width:375px;">
-                                    Subject: {$subject}
+                                    <span class="mailtable">Subject: {$subject}</span>
                                 </td>
                                 <td style="width:15px;">&nbsp;</td>
                                 <td style="width:180px;padding:0 0 0 0;">
-                                    {$sendDate}
+                                    {$sendDate}<button data-messageid="{$messageid}" class="removemessage"> delete </button>
                                 </td>
                                 <td style="width:15px;">&nbsp;</td>
                             </tr>

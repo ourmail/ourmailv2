@@ -32,7 +32,7 @@
 				location.reload(); // refresh page.
             },
 			error: function(error){
-				console.log("Could not set up session");
+				console.log("Could not delete mailbox.");
 			}
         });
 	});
