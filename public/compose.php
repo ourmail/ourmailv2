@@ -2,11 +2,13 @@
 session_start();
 $imapinfo=$_SESSION['imapinfo'];
 
-if(isset($_POST['from'])){
-  $from=$_POST['from'];
+
+
+if(isset($_GET['from'])){
+  $from=$_GET['from'];
 }
-if(isset($_POST['to'])){
-  $to=$_POST['to'];
+if(isset($_GET['to'])){
+  $to=$_GET['to'];
 }
 ?>
 
@@ -26,6 +28,7 @@ if(isset($_POST['to'])){
 
   <body>
 
+
     <div class="wrapper">
 	<div class="container">
 		<h1>Send Email</h1>
@@ -35,8 +38,16 @@ if(isset($_POST['to'])){
       <select id='from' name='from' form="compose">
         <?php
           foreach($imapinfo as $account){
+            
+            if ($account['email']==$from){
+              $selected="selected";
+            }
+            else{
+              $selected="";
+            }
+            
 $output = <<<EOL
-  <option value="{$account['email']}">{$account['email']}</option>
+  <option value="{$account['email']}" $selected>{$account['email']}</option>
 EOL;
 echo $output;
           } 

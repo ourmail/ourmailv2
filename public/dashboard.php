@@ -45,7 +45,8 @@ function print_all_mailboxes($accounts){
 function print_message($message,$unseen){
 
 $senderName=$message['addresses']['from']['name'];
-//$senderEmail="hundal@hundal.com";
+$senderEmail=$message['addresses']['from']['email'];
+$receiverEmail=$message['addresses']['to']['0']['email'];
 $subject=$message['subject'];
 $sendTimeSeconds=$message['date'];
 $sendDate=date('Y/m/d H:i:s', $sendTimeSeconds);
@@ -84,7 +85,8 @@ $message_html = <<<EOT
                                 <td style="width:15px;">&nbsp;</td>
                                 <td style="width:180px;padding:0 0 0 0;">
                                     {$sendDate}<button data-messageid="{$messageid}" class="removemessage"> delete </button>
-                                    <button data-messageid="{$messageid}" class="markread"> Mark as Read </button>
+                                    <button data-messageid="{$messageid}" class="markread"> Mark as Read </button>         
+                                <a target="_blank" href="compose.php?to=$senderEmail&from=$receiverEmail"><button>Reply</button></a>
                                 </td>
                                 <td style="width:15px;">&nbsp;</td>
                             </tr>
