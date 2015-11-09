@@ -19,9 +19,9 @@
 		<h1>Signup for OurMail</h1>
 		
 		<form id="signup">
-			<input id='username' type="text" placeholder="Username" autocomplete = "off" value = "">
-			<input id='email' type="email" placeholder="Email" autocomplete = "off" value = "">
-			<input id='password' type="password" placeholder="Password" autocomplete = "off" value = "">
+			<input id='username' type="text" placeholder="Username" autocomplete = "off">
+			<input id='email' type="email" placeholder="Email" autocomplete = "off">
+			<input id='password' type="password" placeholder="Password" autocomplete = "off">
 			<button type="submit" id="login-button">Signup</button>
 		</form>
 	</div>
