@@ -10,7 +10,11 @@
 	$("#logout").on('click',function(){
 		Parse.User.logOut();
 		console.log("Logged out now");
-		window.location.replace('login.php');	
+		$.post("logout.php", {'logout' : true}, function(data) {
+			if(data.success == true) {
+				window.location.href = "index.php";
+			}
+		}, 'json');			
 	});
 	
 	$(".remove").on('click', function(event){
