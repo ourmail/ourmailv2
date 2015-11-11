@@ -21,8 +21,8 @@
 		<h1>Welcome</h1>
 		
 		<form id="login">
-			<input id="username" type="text" placeholder="Username">
-			<input id="password" type="password" placeholder="Password">
+			<input id="username" type="text" placeholder="Username" autocomplete = "off">
+			<input id="password" type="password" placeholder="Password" autocomplete = "off">
 			<button type="submit" id="login-button">Login</button>
 		</form>
 	</div>

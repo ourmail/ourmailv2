@@ -7,6 +7,7 @@ if(isset($_SESSION['userauth'])) {
 ?>
 
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 
 <head>
