@@ -17,8 +17,10 @@ $(function() {
 		}, 'json');			
 	});	
 	
+	
+	// ************* E M A I L   D I S P L A Y *****************
+	
 	function displayFolders() {
-		// Add more information to the options array if necessary
 		$.post('ajaxPHPpages/email_folders.php', { 'emailFolders' : true }, function(data) {
 			if(data != "Failed to load folders") {
 				$("#email_folder_sidebar").html(data);				
@@ -29,9 +31,10 @@ $(function() {
 		});			
 	}
 	
-	function displayMessages(folder) {
-		// Add more information to the options array if necessary
-		$.post('ajaxPHPpages/email_messages.php', { 'emailMessages' : true, "folder" : folder }, function(data) {
+	var currentFolder = "default";
+	function displayMessages(label, folder) {
+		currentFolder = folder;
+		$.post('ajaxPHPpages/email_messages.php', { 'emailMessages' : true, "label" : label, "folder" : folder }, function(data) {
 			if(data != "Failed to load folders") {
 				$("#email_main_display_container").html(data);				
 			}
@@ -40,6 +43,108 @@ $(function() {
 			}			
 		});	
 	}
+	
+	$('body').on('click', '.folder-link', function() {
+		displayMessages($(this).data('label'), $(this).data('folder'));
+	});
+	
+	$("body").on('click', '.mailtable', function(event){
+		
+		console.log("Attempting to toggle message");
+		
+		$message=$(this).closest("table").next();
+		console.log($message);
+		if ($message.hasClass("hidden")){
+			$message.removeClass("hidden");	
+			console.log("Message Shown");
+		}
+		else{
+			$message.addClass("hidden");
+			console.log("Message hidden");
+		}
+	});
+	
+	$("body").on('click', '.removemessage', function(event){
+		
+		console.log("Attempting to remove message");
+		
+		var myobject={
+			'messageid' : $(this).attr('data-messageid')	
+		};
+		
+		$.ajax({
+        	type: 'POST',
+            url: 'ajaxPHPpages/remove_message.php',
+            data: myobject,
+            async: false,
+            success: function(data) {
+				console.log(data);
+				console.log("Remove successful");
+				//location.reload(); // refresh page.
+				displayMessages(currentFolder);
+            },
+			error: function(error){
+				console.log("Could not delete message.");
+			}
+        });
+	});
+	
+	$("body").on('click', '.markread', function(event){
+		
+		console.log("Attempting to mark message as read");
+		
+		var myobject={
+			'messageid' : $(this).attr('data-messageid')	
+		};
+		
+		$seentag=$(this).parent().prev().prev();
+		
+		$.ajax({
+        	type: 'POST',
+            url: 'ajaxPHPpages/mark_read.php',
+            data: myobject,
+            async: false,
+            success: function(data) {
+				console.log(data);
+				console.log("Mark read successful");
+				
+				
+				$seentag.removeClass("unseen");	
+				$seentag.addClass("seen");	
+				console.log("Marked as read");
+            },
+			error: function(error){
+				console.log("Could not mark message as read.");
+			}
+        });
+	});
+
+	$("body").on('click', '.remove', function(event){
+		
+		console.log("Attempting to remove account");
+		
+		var myobject={
+			'label' : $(this).attr('data-label')	
+		};
+		
+		$.ajax({
+        	type: 'POST',
+            url: 'ajaxPHPpages/remove_mailbox.php',
+            data: myobject,
+            async: false,
+            success: function(data) {
+				console.log(data);
+				console.log("Remove successful");
+				//location.reload(); // refresh page.
+				displayManagementForms("manageMailboxes");
+            },
+			error: function(error){
+				console.log("Could not delete mailbox.");
+			}
+        });
+	});	
+	
+	// ************* A C C O U N T   M A N A G E M E N T   D I S P L A Y *****************
 	
 	function displayOptions() {
 		$.post('ajaxPHPpages/account_management_options.php', { 'accountManagement' : true }, function(data) {
@@ -69,11 +174,7 @@ $(function() {
 		else if(option == "passwordSettings") {
 			// Like above, but password reset page.
 		}
-	}
-	
-	// Need some on click functions that work for folders and calls the displayMessages function with the appropriate folder information
-	
-	
+	}	
 	
 	$('body').on('click', '#mailbox_management_link', function() {
 		displayManagementForms("manageMailboxes");
@@ -87,23 +188,24 @@ $(function() {
 		displayManagementForms("passwordSettings");
 	});
 	
-	
+	// ************* T A B   F U N C T I O N A L I T Y *****************
 	
 	$("#email_button").on('click', function() {
 		$("#email_dashboard_container").css('display', 'block');
 		$("#account_management_container").css('display', 'none');
-		
-		// Call Email Functions?
-		displayFolders();
-		displayMessages("default");
 	});
 	
 	$("#account_button").on('click', function() {
 		$("#email_dashboard_container").css('display', 'none');
 		$("#account_management_container").css('display', 'block');
-		
-		// Call Account Functions?
-		displayOptions();
-		displayManagementForms("manageMailboxes");
 	});
+	
+	// ************* I N I T I A L   P A G E   S E T U P *****************
+	
+	displayFolders();
+	displayMessages("default", "default");
+	
+	displayOptions();
+	displayManagementForms("manageMailboxes");
+	
 });

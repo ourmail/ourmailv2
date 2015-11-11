@@ -8,7 +8,7 @@ $contextid=$_SESSION['contextid'];
 
 //This function prints a folder to the side navbar
 function print_folder($folder,$label){
-    $output="<li>\n<a href=\"dashboard_old.php?label=" . rawurlencode($label) . "&folder=" .rawurlencode($folder) . "\">" .$folder . "</a>\n</li>\n";
+    $output="<li>\n<a data-label=\"".rawurlencode($label).'" data-folder="'.rawurlencode($folder).'" class="folder-link" href="#">' .$folder . "</a>\n</li>\n";
     echo $output;
 }
 
@@ -18,7 +18,7 @@ function print_mailbox($account){
  
 $output = <<<EOL
     <li>
-        $label
+        $labels
     <ul class="sidebar-brand">
 EOL;
     

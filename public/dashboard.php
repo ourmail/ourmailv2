@@ -26,6 +26,8 @@ if(isset($_SESSION['recache'])){
     <title>Ourmail Dashboard</title>
 
     <link href="css/dashboard.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 

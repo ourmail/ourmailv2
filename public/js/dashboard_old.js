@@ -28,7 +28,7 @@ $(function() {
 	});
 	
 	
-	$(".mailtable").on('click', function(event){
+	$("body").on('click', '.mailtable' function(event){
 		
 		console.log("Attempting to toggle message");
 		
@@ -44,7 +44,7 @@ $(function() {
 		}
 	});
 	
-	$(".removemessage").on('click', function(event){
+	$("body").on('click', '.removemessage' function(event){
 		
 		console.log("Attempting to remove message");
 		
@@ -68,7 +68,7 @@ $(function() {
         });
 	});
 	
-	$(".markread").on('click', function(event){
+	$("body").on('click', '.markread', function(event){
 		
 		console.log("Attempting to mark message as read");
 		
