@@ -6,7 +6,7 @@
 	var Post = Parse.Object.extend("Post");
 
 	// ************ C U R R E N T   U S E R *******************
-	function displayCurrentUser() {
+	/*function displayCurrentUser() {
 		if (Parse.User.current()) {
 			console.log("Logged in by "+Parse.User.current().get("username"));
 			//Parse.User.logOut();
@@ -17,15 +17,15 @@
 		}
 	}
 	
-	displayCurrentUser();
+	displayCurrentUser();*/
 	
 	// ****************** L O G I N *************************
 	
 	$("#login").submit(function(event) {
 		event.preventDefault();
 		var user = new Parse.User();
-		user.set("username", $("#username").val());
-		user.set("password", $("#password").val());
+		user.set("username", $("#loginUsername").val());
+		user.set("password", $("#loginPassword").val());
 		user.logIn({
 			success: function(user) { //on success, user object is pass back to me
 				console.log("login success."); 

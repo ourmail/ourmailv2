@@ -15,7 +15,7 @@ $(function() {
 				window.location.href = "index.php";
 			}
 		}, 'json');			
-	});
+	});	
 	
 	function displayFolders() {
 		// Add more information to the options array if necessary

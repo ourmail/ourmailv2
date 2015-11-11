@@ -65,9 +65,27 @@ if(isset($_SESSION['userauth'])) {
                     <li class="page-scroll">
                         <a href="signup.php">Create account</a>
                     </li>
-                    <li class="page-scroll">
+					 <!-- ############################# S I G N   I N ######################## -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <form class="login" id="login">
+                                <input type="text" id="loginUsername" placeholder="Username" class="form-control"> <!-- enter username -->
+                                <input type="password" id="loginPassword" placeholder="Password" class="form-control"> <!-- enter password -->
+                                <input type="submit" id="loginSubmit" class="btn btn-success btn-lg" value="Log In">
+                            </form>
+							<!-- for debug who is logged in
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Current User</li>
+                            <div id="current-user"></div>
+                            <button id="logout" type="submit" class="btn btn-success btn-lg">LogOut</button>
+							 -->
+                        </ul>
+                     </li>
+                     <!-- ############################################### -->
+                    <!--<li class="page-scroll">
                         <a href="login.php">Login</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
