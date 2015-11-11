@@ -1,11 +1,16 @@
+.container-fluid{
+	padding: 0 !important;
+}
 #header 
 {
-	background-color: DeepSkyBlue;
+	background-color: #5AB5FF;
 	font-family: "Cabin", Arial;
 	text-align: center;
 	padding: 10px;
-	border-radius: 10px;
 	font-size: 25px;
+}
+h2{
+	color: rgba(255, 255, 255, 0.73);
 }
 
 #sidetext
@@ -67,8 +72,16 @@ form
 
 .name
 {
-	width: 160px;
 	height: 25px;
+}
+#firstname{
+	width: 160px;
+	float: left;
+    margin-right: 20px;
+}
+
+#lastname{
+	width: 160px;
 }
 
 .samebox
@@ -93,6 +106,7 @@ form
 	position: absolute;
     /* position: relative; */
     left: 35%;
+    
 }
 
 .error {
@@ -100,5 +114,12 @@ form
 	color: #CC0000;
 }
 
+#signupForm{
+	padding: 7% !important
+}
+
+.Logo{
+	padding-top: 50px;
+}
 
 
