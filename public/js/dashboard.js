@@ -1,100 +1,109 @@
 $(function() {
+	"use strict";
+	Parse.$ = jQuery;
+	Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN"); 
+
+	var Post = Parse.Object.extend("Post");
+
+	// ************ L O G O U T *******************
 	
-	$(".replymail").submit(function(event){
-		event.preventDefault();
-		
-		console.log("Attempting to send message.")
-		
-		/*
-  		$.ajax({
-   			type: "POST",
-    		url: "https://mandrillapp.com/api/1.0/messages/send.json",
-    		data: {
-      			'key': 'YOUR_KEY',
-      			'message': {
-        		'from_email': 'YOUR_SENDER@example.com',
-        		'to': [
-          			{
-            			'email': 'YOUR_RECEIVER@example.com',
-            			'name': 'YOUR_RECEIVER_NAME',
-            			'type': 'to'
-          			}
-        		],
-        		'subject': 'title',
-        		'html': 'html can be used'
-      			}
-    		}
-  		});*/
-	});
-	
-	
-	$(".mailtable").on('click', function(event){
-		
-		console.log("Attempting to toggle message");
-		
-		$message=$(this).closest("table").next();
-		console.log($message);
-		if ($message.hasClass("hidden")){
-			$message.removeClass("hidden");	
-			console.log("Message Shown");
-		}
-		else{
-			$message.addClass("hidden");
-			console.log("Message hidden");
-		}
-	});
-	
-	$(".removemessage").on('click', function(event){
-		
-		console.log("Attempting to remove message");
-		
-		var myobject={
-			'messageid' : $(this).attr('data-messageid')	
-		};
-		
-		$.ajax({
-        	type: 'POST',
-            url: 'remove_message.php',
-            data: myobject,
-            async: false,
-            success: function(data) {
-				console.log(data);
-				console.log("Remove successful");
-				location.reload(); // refresh page.
-            },
-			error: function(error){
-				console.log("Could not delete message.");
+	$("#logout_button").on('click',function(){
+		Parse.User.logOut();
+		console.log("Logged out now");
+		$.post("ajaxPHPpages/logout.php", {'logout' : true}, function(data) {
+			if(data.success == true) {
+				window.location.href = "index.php";
 			}
-        });
+		}, 'json');			
 	});
 	
-	$(".markread").on('click', function(event){
-		
-		console.log("Attempting to mark message as read");
-		
-		var myobject={
-			'messageid' : $(this).attr('data-messageid')	
-		};
-		
-		$seentag=$(this).parent().prev().prev();
-		
-		$.ajax({
-        	type: 'POST',
-            url: 'mark_read.php',
-            data: myobject,
-            async: false,
-            success: function(data) {
-				console.log(data);
-				console.log("Mark read successful");
-				
-				
-				$seentag.removeClass("unseen");	
-				$seentag.addClass("seen");	
-				console.log("Marked as read");
-            },
-			error: function(error){
-				console.log("Could not mark message as read.");
+	function displayFolders() {
+		// Add more information to the options array if necessary
+		$.post('ajaxPHPpages/email_folders.php', { 'emailFolders' : true }, function(data) {
+			if(data != "Failed to load folders") {
+				$("#email_folder_sidebar").html(data);				
 			}
-        });
+			else {
+				console.log(data);
+			}			
+		});			
+	}
+	
+	function displayMessages(folder) {
+		// Add more information to the options array if necessary
+		$.post('ajaxPHPpages/email_messages.php', { 'emailMessages' : true, "folder" : folder }, function(data) {
+			if(data != "Failed to load folders") {
+				$("#email_main_display_container").html(data);				
+			}
+			else {
+				console.log(data);
+			}			
+		});	
+	}
+	
+	function displayOptions() {
+		$.post('ajaxPHPpages/account_management_options.php', { 'accountManagement' : true }, function(data) {
+			if(data != "Failed to load options") {
+				$("#account_management_sidebar").html(data);				
+			}
+			else {
+				console.log(data);
+			}			
+		});		
+	}
+	
+	function displayManagementForms(option) {
+		if(option == "manageMailboxes") {
+			$.post('ajaxPHPpages/manage_mailboxes.php', { 'manageMailboxes' : true }, function(data) {
+				if(data != "Failed to load options") {
+					$("#account_management_display_container").html(data);	
+				}
+				else {
+					console.log(data);
+				}			
+			});
+		}
+		else if(option == "accountSettings") {
+			// Like above, but username/first name/last name/email/security question settings page.
+		}
+		else if(option == "passwordSettings") {
+			// Like above, but password reset page.
+		}
+	}
+	
+	// Need some on click functions that work for folders and calls the displayMessages function with the appropriate folder information
+	
+	
+	
+	$('body').on('click', '#mailbox_management_link', function() {
+		displayManagementForms("manageMailboxes");
+	});
+	
+	$('body').on('click', '#account_setting_link', function() {
+		displayManagementForms("accountSettings");
+	});
+	
+	$('body').on('click', '#password_setting_link', function() {
+		displayManagementForms("passwordSettings");
+	});
+	
+	
+	
+	$("#email_button").on('click', function() {
+		$("#email_dashboard_container").css('display', 'block');
+		$("#account_management_container").css('display', 'none');
+		
+		// Call Email Functions?
+		displayFolders();
+		displayMessages("default");
+	});
+	
+	$("#account_button").on('click', function() {
+		$("#email_dashboard_container").css('display', 'none');
+		$("#account_management_container").css('display', 'block');
+		
+		// Call Account Functions?
+		displayOptions();
+		displayManagementForms("manageMailboxes");
 	});
 });

@@ -1,0 +1,19 @@
+#email_folder_sidebar, #account_management_sidebar {
+	display: inline-block;
+	width: 25%;
+	border: 1px solid #000;
+}
+
+#email_main_display_container, #account_management_display_container {
+	display: inline-block;
+	width: 50%;
+	border: 1px solid #000;
+}
+
+#email_dashboard_container {
+	display: block;
+}
+
+#account_management_container {
+	display: none;
+}

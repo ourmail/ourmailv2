@@ -1,22 +1,4 @@
  $(function() {
-"use strict";
-	Parse.$ = jQuery;
-	Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN"); 
-
-	var Post = Parse.Object.extend("Post");
-
-	// ************ L O G O U T *******************
-	
-	$("#logout").on('click',function(){
-		Parse.User.logOut();
-		console.log("Logged out now");
-		$.post("logout.php", {'logout' : true}, function(data) {
-			if(data.success == true) {
-				window.location.href = "index.php";
-			}
-		}, 'json');			
-	});
-	
 	$(".remove").on('click', function(event){
 		
 		console.log("Attempting to remove account");

@@ -41,13 +41,13 @@
 				//Set up session for user.
 				$.ajax({
               		type: 'POST',
-              		url: 'set_up_session.php',
+              		url: 'ajaxPHPpages/set_up_session.php',
               		data: myobject,
               		async: false,
               		success: function(data) {
 						console.log(data);
 				  		console.log("Session set up successful");
-						window.location.replace('manage_mailboxes.php'); // go to the manage mailboxes page.
+						window.location.href = 'ajaxPHPpages/update_imap_info.php'; // update imap info for email connections
               		},
 					error: function(error){
 						console.log("Could not set up session");

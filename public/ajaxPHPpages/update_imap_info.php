@@ -49,7 +49,7 @@ function buildImapInfo(&$imapinfo, $ctxio, $contextid){
 //Helper Function End
 
 // Include Context IO Library
-require_once 'PHP-ContextIO/class.contextio.php';
+require_once '../PHP-ContextIO/class.contextio.php';
 
 // API Key and Secret. Get the Users email from Parse
 define('CONSUMER_KEY', 'ru1j2q2s');
@@ -72,7 +72,7 @@ $_SESSION['imapinfo']=$imapinfo;
 if(isset($_SESSION['recache'])){
     unset($_SESSION['recache']);
 }
-header("Location: manage_mailboxes.php");
+header("Location: /dashboard.php");
 die();
 
 ?>

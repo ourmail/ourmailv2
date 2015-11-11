@@ -3,7 +3,7 @@ session_start();
 session_regenerate_id();
 
 if(isset($_SESSION['userauth'])) {
-	header("Location: manage_mailboxes.php");
+	header("Location: dashboard.php");
     die();
 }
 ?>
