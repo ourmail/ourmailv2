@@ -8,7 +8,7 @@ if(!isset($_SESSION['userauth']) or ($_SESSION['userauth']) != true) {
 }
 
 if(isset($_SESSION['recache'])){
-	header("Location: update_imap_info.php");
+	header("Location: ajaxPHPpages/update_imap_info.php");
 	die();
 }
 ?>
