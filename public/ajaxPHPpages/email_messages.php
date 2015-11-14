@@ -37,46 +37,61 @@ function print_message($message,$unseen){
 			$seen_status="unseen";
 		}
 
-$message_html = <<<EOT
+//$message_html = <<<EOT
                     
                         
-                        <table border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
-                            <tr>
-                                <td colspan="5" style="padding:15px 0;">
-                                    <h1 style="color:#000;font-size:24px;padding:0 15px;margin:0;">From: {$senderName}</h1>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:15px;">&nbsp;</td>
-                                <td class="$seen_status seen_stat" style="width:375px;">
-                                    <span class="mailtable">Subject: {$subject}</span>
-                                </td>
-                                <td style="width:15px;">&nbsp;</td>
-                                <td style="width:180px;padding:0 0 0 0;">
-                                    {$sendDate}<button data-messageid="{$messageid}" class="removemessage"> delete </button>
-                                    <button data-messageid="{$messageid}" class="markread"> Mark as Read </button>         
-                                <a target="_blank" href="compose.php?to=$senderEmail&from=$receiverEmail"><button>Reply</button></a>
-                                </td>
-                                <td style="width:15px;">&nbsp;</td>
-                            </tr>
-                        </table>
-                        <div class="hidden mailmessage">
-                            $body
-                        </div>
-EOT;
+                        // <table border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
+                        //     <tr>
+                        //         <td colspan="5" style="padding:15px 0;">
+                        //             <h1 style="color:#000;font-size:24px;padding:0 15px;margin:0;">From: {$senderName}</h1>
+                        //         </td>
+                        //     </tr>
+                        //     <tr>
+                        //         <td style="width:15px;">&nbsp;</td>
+                        //         <td class="$seen_status seen_stat" style="width:375px;">
+                        //             <span class="mailtable">Subject: {$subject}</span>
+                        //         </td>
+                        //         <td style="width:15px;">&nbsp;</td>
+                        //         <td style="width:180px;padding:0 0 0 0;">
+                        //             {$sendDate}<button data-messageid="{$messageid}" class="removemessage"> delete </button>
+                        //             <button data-messageid="{$messageid}" class="markread"> Mark as Read </button>         
+                        //         <a target="_blank" href="compose.php?to=$senderEmail&from=$receiverEmail"><button>Reply</button></a>
+                        //         </td>
+                        //         <td style="width:15px;">&nbsp;</td>
+                        //     </tr>
+                        // </table>
+                        // <div class="hidden mailmessage">
+                        //     $body
+                        // </div>
+//EOT;
 
-		echo $message_html;
+        $message_html = "<tr><td>{$senderName}</td><td>Subject: {$subject}</td><td>{$sendDate}</td>";
+        $message_html = $message_html."<td><button data-messageid='{$messageid}'' class='removemessage'> Delete </button></td>";
+        $message_html = $message_html."<td><a target='_blank' href='compose.php?to=$senderEmail&from=$receiverEmail'><button>Reply</button></a></td>";
+        $message_html = $message_html."<td><button data-messageid='{$messageid}' class='markread'> Mark as Read </button></td></tr>";
+        return $message_html;          
+
+//EOT;
+
+    //echo $message_html;
 	}
 	else {
-		echo nl2br(rawurldecode($message))."<br>";
+		//echo nl2br(rawurldecode($message))."<br>";
+        return nl2br(rawurldecode($message))."<br>";
 	}
 }
 
 // This function takes list of message objects and prints them all
 function print_all_messages($msgsd,$unseen=false){
+
+    $all_messages = "<table class ='table table-hover'>";
+
     foreach($msgsd as $msg){
-        print_message($msg,$unseen);
+        $all_messages = $all_messages.print_message($msg,$unseen);
     }
+
+    $all_messages = $all_messages."</table>";
+    echo $all_messages;
 }
 
 // This function fetches messages and prints them all.
@@ -123,19 +138,25 @@ function refresh_mailbox(){
     global $imapinfo;
     //var_dump($imapinfo);
 	// FIXME. Do error checking for wrong variables passed.
-	if (isset($_POST['label']) && $_POST['label'] != "default") {
-		$label=rawurlencode($_POST['label']);
+	if(count($imapinfo) == 0) {
+		echo "No email account is registered to this account.";
 	}
 	else {
-		$label=$imapinfo['0']['label'];
+		if (isset($_POST['label']) && $_POST['label'] != "default") {
+			$label=rawurlencode($_POST['label']);
+		}
+		else {
+			
+			$label=$imapinfo['0']['label'];
+		}
+		if (isset($_POST['folder']) && $_POST['folder'] != "default") {
+			$folder=rawurlencode($_POST['folder']);
+		}
+		else {
+			$folder=$imapinfo['0']['folders']['0'];
+		}
+		get_messages_and_print($label,$folder);
 	}
-	if (isset($_POST['folder']) && $_POST['folder'] != "default") {
-		$folder=rawurlencode($_POST['folder']);
-	}
-	else {
-		$folder=$imapinfo['0']['folders']['0'];
-	}
-    get_messages_and_print($label,$folder);
 }
 
 // Helper Functions end
