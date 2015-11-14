@@ -94,23 +94,22 @@ $(function() {
 		console.log("Attempting to mark message as read");
 		
 		var myobject={
-			'messageid' : $(this).attr('data-messageid')	
+			'messageid' : $(this).data('messageid')	
 		};
 		
-		$seentag=$(this).parent().prev().prev();
+		var seentag = $(this).parent().prev().prev();
 		
 		$.ajax({
         	type: 'POST',
             url: 'ajaxPHPpages/mark_read.php',
             data: myobject,
-            async: false,
+            async: true,
             success: function(data) {
 				console.log(data);
 				console.log("Mark read successful");
 				
-				
-				$seentag.removeClass("unseen");	
-				$seentag.addClass("seen");	
+				seentag.removeClass("unseen");	
+				seentag.addClass("seen");	
 				console.log("Marked as read");
             },
 			error: function(error){

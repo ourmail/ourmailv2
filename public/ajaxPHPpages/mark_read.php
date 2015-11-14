@@ -4,7 +4,7 @@ $contextid=$_SESSION['contextid'];
 $messageid=$_POST['messageid'];
 
 //include context.io library
-require_once 'PHP-ContextIO/class.contextio.php';
+require_once '../PHP-ContextIO/class.contextio.php';
 
 //API Key and Secret. Found in the context IO Developers Settings
 define('CONSUMER_KEY', 'ru1j2q2s');
