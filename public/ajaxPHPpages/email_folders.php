@@ -22,13 +22,13 @@ function print_folder($folder,$label){
 function print_mailbox($account){
     $label=$account['label'];
  
-$output = <<<EOL
-    <li>
-        $label
-    <ul class="sidebar-brand">
-EOL;
+//$output = <<<EOL
+    //<li>
+        //$label
+    //<ul class="sidebar-brand">
+//EOL;
     
-    echo $output;
+    //echo $output;
     foreach($account['folders'] as $folder){
         print_folder($folder,$label);
     }       
@@ -42,11 +42,42 @@ echo $output;
 
 //This function prints all mailboxes
 function print_all_mailboxes($accounts){
-    foreach($accounts as $account){
-        print_mailbox($account);
-    }
-}
+    
+    $tab_output = "<ul class='nav nav-tabs nav-justified'>";
+    $counter_one = 0;
 
+    foreach($accounts as $account)
+    {
+        // getting account label here and cleaning it to only get account name
+        $cur_label = $account['label'];
+        $cur_label = substr($cur_label , 0 , strpos($cur_label, ":"));          
+
+        $tab_output = $tab_output."<li><a data-toggle='tab' href='#".$counter_one."'>".$cur_label."</a></li>";
+        ++$counter_one;
+    }
+
+    $tab_output = $tab_output."</ul><div class='tab-content'>";
+    echo $tab_output;
+    
+    $counter_two = 0;
+
+    foreach($accounts as $account)
+    {
+        $cur_label = $account['label'];
+        $cur_label = substr($cur_label , 0 , strpos($cur_label, ":"));         
+
+        $tab_output = "<div id='".$counter_two."' class='tab-pane fade'>";
+        echo $tab_output;
+        print_mailbox($account);
+        $tab_output = "</p></div>";
+        echo $tab_output;
+        ++$counter_two;
+    }
+
+    $tab_output = "</div>";
+        
+    echo $tab_output;
+}
 
 // Include Context IO Library
 require_once '../PHP-ContextIO/class.contextio.php';

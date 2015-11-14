@@ -123,25 +123,19 @@ function refresh_mailbox(){
     global $imapinfo;
     //var_dump($imapinfo);
 	// FIXME. Do error checking for wrong variables passed.
-	if(count($imapinfo) == 0) {
-		echo "No email account is registered to this account.";
+	if (isset($_POST['label']) && $_POST['label'] != "default") {
+		$label=rawurlencode($_POST['label']);
 	}
 	else {
-		if (isset($_POST['label']) && $_POST['label'] != "default") {
-			$label=rawurlencode($_POST['label']);
-		}
-		else {
-			
-			$label=$imapinfo['0']['label'];
-		}
-		if (isset($_POST['folder']) && $_POST['folder'] != "default") {
-			$folder=rawurlencode($_POST['folder']);
-		}
-		else {
-			$folder=$imapinfo['0']['folders']['0'];
-		}
-		get_messages_and_print($label,$folder);
+		$label=$imapinfo['0']['label'];
 	}
+	if (isset($_POST['folder']) && $_POST['folder'] != "default") {
+		$folder=rawurlencode($_POST['folder']);
+	}
+	else {
+		$folder=$imapinfo['0']['folders']['0'];
+	}
+    get_messages_and_print($label,$folder);
 }
 
 // Helper Functions end

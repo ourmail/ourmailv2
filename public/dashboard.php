@@ -28,6 +28,8 @@ if(isset($_SESSION['recache'])){
     <link href="css/dashboard.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/simple-sidebar.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 
 </head>
 
@@ -35,22 +37,44 @@ if(isset($_SESSION['recache'])){
 
 	<div id="navigation_bar"> 
 		<!-- Corner logo? -->
+
+		<nav class="navbar navbar-inverse">
+  			<div class="container-fluid">
+    			
+    			<div class="navbar-header">
+      				<a class="navbar-brand" href="#">Ourmail</a>
+    			</div>
+    			
+    			<div>
+					<ul class="nav navbar-nav">
+        				<li class="active"><a href="#">Main</a></li>
+        				<li><a href="#" id= "email_button">Email</a></li>
+        				<li><a href="#" id= "account_button">Account</a></li>  
+      				</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+        				<li><a href="#" id = "logout_button"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+      				</ul>
+    			</div>
+  			
+  			</div>
+		</nav>
 	
-		<ul>
+		<!-- <ul class="nav nav-pills nav-stacked">
 			<li><a href="#" id="email_button">Email</a></li>
 			<li><a href="#" id="account_button">Account</a></li>
 			<li><a href="#" id="logout_button">Logout</a></li>
-		</ul>
+		</ul> -->
 	
 	</div>
 	
 	<div id="email_dashboard_container">
 		<div id="email_folder_sidebar">
-			Email Sidebar Area
+			<!-- Email Sidebar Area -->
 		</div>
 		
 		<div id="email_main_display_container">
-			Email Display Area
+			<!-- Email Display Area -->
 		</div>
 	</div>
 	
@@ -75,6 +99,10 @@ if(isset($_SESSION['recache'])){
     <script src = "js/dashboard.js"></script>
 	
 	<script src="js/manage_mailboxes.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
 
 </body>
 <html>
