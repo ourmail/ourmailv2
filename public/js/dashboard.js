@@ -69,14 +69,14 @@ $(function() {
 		console.log("Attempting to remove message");
 		
 		var myobject={
-			'messageid' : $(this).attr('data-messageid')	
+			'messageid' : $(this).data('messageid')	
 		};
 		
 		$.ajax({
         	type: 'POST',
             url: 'ajaxPHPpages/remove_message.php',
             data: myobject,
-            async: false,
+            async: true,
             success: function(data) {
 				console.log(data);
 				console.log("Remove successful");
@@ -130,7 +130,7 @@ $(function() {
         	type: 'POST',
             url: 'ajaxPHPpages/remove_mailbox.php',
             data: myobject,
-            async: false,
+            async: true,
             success: function(data) {
 				console.log(data);
 				console.log("Remove successful");
