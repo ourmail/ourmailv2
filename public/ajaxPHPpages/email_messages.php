@@ -14,7 +14,7 @@ $contextid=$_SESSION['contextid'];
 // This function creates a modal popup and returns it as an html object
 function create_message_popup($body, $subject , $counter)
 {
-    $message = "<div id= 'm' class= 'modal fade' role= 'dialog'><div class= 'modal-dialog'><div class='modal-content'><div class='modal-header'>";
+    $message = "<div id= '{$counter}' class= 'modal fade' role= 'dialog'><div class= 'modal-dialog'><div class='modal-content'><div class='modal-header'>";
     $message = $message."<h4 class='modal-title'>{$subject}</h4></div><div class= 'modal-body'><p>{$body}</p></div><div class='modal-footer'>";
     $message = $message."<button type= 'button' class='btn btn-default' data-dismiss= 'modal'>Close</button></div></div></div></div>";
 
@@ -85,7 +85,7 @@ function print_message($message,$unseen,$counter){
         // this is the html code for the modal popup. 
         // Every modal object has a unique id so that only that message will pop up.
 
-        $message_html = $message_html."<td><button type='button' class='btn' data-toggle='modal' data-target= '#m'>View Email</button></td></tr>";
+        $message_html = $message_html."<td><button type='button' class='btn' data-toggle='modal' data-target= '#{$counter}'>View Email</button></td></tr>";
         $popup = create_message_popup($body, $subject, $counter); 
         
         return array($message_html, $popup);
@@ -119,7 +119,7 @@ function print_all_messages($msgsd,$unseen=false){
 
     $all_messages = "<table class ='table table-hover'>";
     $all_popups = "";
-    $counter = 0;
+    $counter = 1000;
 
     foreach($msgsd as $msg)
     {
