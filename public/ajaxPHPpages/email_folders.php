@@ -20,15 +20,9 @@ function print_folder($folder,$label){
 
 //This function prints a mailbox to the side navbar. It call print_folder to print folders contained in a mailbox.
 function print_mailbox($account){
-    $label=$account['label'];
- 
-//$output = <<<EOL
-    //<li>
-        //$label
-    //<ul class="sidebar-brand">
-//EOL;
     
-    //echo $output;
+    $label=$account['label'];
+    
     foreach($account['folders'] as $folder){
         print_folder($folder,$label);
     }       

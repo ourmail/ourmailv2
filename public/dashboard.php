@@ -59,13 +59,6 @@ if(isset($_SESSION['recache'])){
   			
   			</div>
 		</nav>
-	
-		<!-- <ul class="nav nav-pills nav-stacked">
-			<li><a href="#" id="email_button">Email</a></li>
-			<li><a href="#" id="account_button">Account</a></li>
-			<li><a href="#" id="logout_button">Logout</a></li>
-		</ul> -->
-	
 	</div>
 	
 	<div id="email_dashboard_container">

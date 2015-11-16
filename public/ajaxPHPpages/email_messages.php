@@ -49,33 +49,6 @@ function print_message($message,$unseen,$counter){
 			$seen_status="unseen";
 		}
 
-//$message_html = <<<EOT
-                    
-                        
-                        // <table border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
-                        //     <tr>
-                        //         <td colspan="5" style="padding:15px 0;">
-                        //             <h1 style="color:#000;font-size:24px;padding:0 15px;margin:0;">From: {$senderName}</h1>
-                        //         </td>
-                        //     </tr>
-                        //     <tr>
-                        //         <td style="width:15px;">&nbsp;</td>
-                        //         <td class="$seen_status seen_stat" style="width:375px;">
-                        //             <span class="mailtable">Subject: {$subject}</span>
-                        //         </td>
-                        //         <td style="width:15px;">&nbsp;</td>
-                        //         <td style="width:180px;padding:0 0 0 0;">
-                        //             {$sendDate}<button data-messageid="{$messageid}" class="removemessage"> delete </button>
-                        //             <button data-messageid="{$messageid}" class="markread"> Mark as Read </button>         
-                        //         <a target="_blank" href="compose.php?to=$senderEmail&from=$receiverEmail"><button>Reply</button></a>
-                        //         </td>
-                        //         <td style="width:15px;">&nbsp;</td>
-                        //     </tr>
-                        // </table>
-                        // <div class="hidden mailmessage">
-                        //     $body
-                        // </div>
-//EOT;
         // this is the html code for the email strip
         $message_html = "<tr><td>{$senderName}</td><td>Subject: {$subject}</td><td>{$sendDate}</td>";
         $message_html = $message_html."<td><button data-messageid='{$messageid}'' class='removemessage'> Delete </button></td>";
@@ -84,31 +57,13 @@ function print_message($message,$unseen,$counter){
 
         // this is the html code for the modal popup. 
         // Every modal object has a unique id so that only that message will pop up.
-
         $message_html = $message_html."<td><button type='button' class='btn' data-toggle='modal' data-target= '#{$counter}'>View Email</button></td></tr>";
         $popup = create_message_popup($body, $subject, $counter); 
         
         return array($message_html, $popup);
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //return $message_html;          
-
-//EOT;
-
-    //echo $message_html;
 	}
-	else {
+	
+    else {
 		//echo nl2br(rawurldecode($message))."<br>";
         return nl2br(rawurldecode($message))."<br>";
 	}

@@ -69,14 +69,14 @@ $(function() {
 		console.log("Attempting to remove message");
 		
 		var myobject={
-			'messageid' : $(this).data('messageid')	
+			'messageid' : $(this).attr('data-messageid')	
 		};
 		
 		$.ajax({
         	type: 'POST',
             url: 'ajaxPHPpages/remove_message.php',
             data: myobject,
-            async: true,
+            async: false,
             success: function(data) {
 				console.log(data);
 				console.log("Remove successful");
@@ -94,22 +94,23 @@ $(function() {
 		console.log("Attempting to mark message as read");
 		
 		var myobject={
-			'messageid' : $(this).data('messageid')	
+			'messageid' : $(this).attr('data-messageid')	
 		};
 		
-		var seentag = $(this).parent().prev().prev();
+		$seentag=$(this).parent().prev().prev();
 		
 		$.ajax({
         	type: 'POST',
             url: 'ajaxPHPpages/mark_read.php',
             data: myobject,
-            async: true,
+            async: false,
             success: function(data) {
 				console.log(data);
 				console.log("Mark read successful");
 				
-				seentag.removeClass("unseen");	
-				seentag.addClass("seen");	
+				
+				$seentag.removeClass("unseen");	
+				$seentag.addClass("seen");	
 				console.log("Marked as read");
             },
 			error: function(error){
@@ -130,7 +131,7 @@ $(function() {
         	type: 'POST',
             url: 'ajaxPHPpages/remove_mailbox.php',
             data: myobject,
-            async: true,
+            async: false,
             success: function(data) {
 				console.log(data);
 				console.log("Remove successful");
