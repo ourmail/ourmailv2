@@ -170,6 +170,14 @@ $(function() {
 		}
 		else if(option == "accountSettings") {
 			// Like above, but username/first name/last name/email/security question settings page.
+			$.post('ajaxPHPpages/account_settings.php', { 'accountSettings' : true }, function(data) {
+				if(data != "Failed to load options") {
+					$("#account_management_display_container").html(data);	
+				}
+				else {
+					console.log(data);
+				}			
+			});
 		}
 		else if(option == "passwordSettings") {
 			// Like above, but password reset page.
