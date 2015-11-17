@@ -4,7 +4,7 @@ $(function() {
 	Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN"); 
 
 	var Post = Parse.Object.extend("Post");
-
+	
 	// ************ L O G O U T *******************
 	
 	$("#logout_button").on('click',function(){

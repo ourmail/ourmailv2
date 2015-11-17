@@ -30,7 +30,7 @@ function buildImapInfo(&$imapinfo, $ctxio, $contextid){
         $f=$ctxio->listSourceFolders($contextid, array(
             'label' => $label
         ));
-        if ($f === false) {
+        if ($f === false) { 
             throw new exception("Could not fetch folders");
         } 
 

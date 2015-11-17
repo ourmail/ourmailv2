@@ -14,8 +14,8 @@ $imapinfo=$_SESSION['imapinfo'];
 
 foreach($imapinfo as $mailbox){
 $output = <<<EOL
-	<li>
-		{$mailbox['label']} <button data-label="{$mailbox['label']}" class="remove">delete</button>
+	<li  >
+		<button id = "manageButton" type="button" data-label="{$mailbox['label']}" class="remove">delete</button> <spin> {$mailbox['label']}</spin> 
 	</li>
 EOL;
 echo $output;

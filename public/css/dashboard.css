@@ -3,15 +3,18 @@
 	width: 25%;
 	border: 1px solid #000;
 }*/
+li{
+	list-style-type: none
+}
 
 #account_management_sidebar {
 	display: inline-block;
 	width: 25%;
-	border: 1px solid #000;
+	/*border: 1px solid #000;*/
 }
 
 #account_management_display_container {
-	display: inline-block;
+	/*display: inline-block;*/
 	width: 50%;
 	border: 1px solid #000;
 }
@@ -22,4 +25,9 @@
 
 #account_management_container {
 	display: none;
+}
+
+#manageButton{
+	width:70px;
+
 }

@@ -14,7 +14,7 @@ $contextid=$_SESSION['contextid'];
 //This function prints a folder to the side navbar
 function print_folder($folder,$label){
     //$output="<li>\n<a data-label=\"".rawurlencode($label).'" data-folder="'.rawurlencode($folder).'" class="folder-link" href="#">' .$folder . "</a>\n</li>\n";
-	$output="<li>\n<a data-label=\"".$label.'" data-folder="'.$folder.'" class="folder-link" href="#">' .$folder . "</a>\n</li>\n";
+	$output="<li>\n<a class=\"list-group-item\" data-label=\"".$label.'" data-folder="'.$folder.'" class="folder-link" href="#">' .$folder . "</a>\n</li>\n";
     echo $output;
 }
 
