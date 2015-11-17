@@ -180,7 +180,24 @@ $(function() {
 			});
 		}
 		else if(option == "passwordSettings") {
-			// Like above, but password reset page.
+			// Like above, but password reset page	var cur_user = Parse.User.current();
+
+			var currentUser = Parse.User.current();
+			var currentUserEmail = currentUser.get("email");
+
+			Parse.User.requestPasswordReset(currentUserEmail, {
+			success: function() {
+				 alert("Password reset instructions were successfully sent to your email address.");
+				 window.location.href = "main.php";
+				 return true;
+			},
+			error: function(error) {
+				// Show the error message somewhere
+				alert("Error: " + error.code + " " + error.message);
+				return false;
+			}
+			});
+	
 		}
 	}	
 	

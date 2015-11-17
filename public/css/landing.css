@@ -465,23 +465,29 @@ footer .footer-below {
     border-color: #5AB5FF !important;
 }
 .dropdown-menu{
-    width:280px;
+    width: auto;
 }
 .dropdown-menu input{
+    margin-left: 5px;
+    margin-right: 5px;
     margin-bottom: 5px;
-    border: aliceblue;
 }
-.dropdown-menu button{
-    position: relative;
-    left: 35%;
-}
-#login-submit{
-    position: relative;
-    left: 35%;
+.dropdown-menu #loginSubmit{
+	float:left;
+    background-color: #5AB5FF !important;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-style: none;
 }
 .dropdown-header{
     padding-left: 10px;
 }
-#current-user{
-    padding-left: 10px;
+.dropdown .forgot-password{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+	color:#337ab7;
+	font-size: 10px;
+	text-transform: lowercase;
+	float: right;
 }
