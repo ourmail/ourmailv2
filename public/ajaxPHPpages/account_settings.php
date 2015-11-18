@@ -17,7 +17,7 @@ if(!isset($_POST['accountSettings']) or ($_POST['accountSettings']) != true) {
 	<ul>
 
 	<div id="container">
-			<div class="col-xs-12 col-md-6" class="Account Settings">
+			<div  class="Account Settings">
 
 				<div id="signupForm">
 						Name:<br>

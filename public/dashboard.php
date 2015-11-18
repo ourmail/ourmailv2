@@ -16,7 +16,7 @@ if(isset($_SESSION['recache'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,11 +78,11 @@ if(isset($_SESSION['recache'])){
 	</div>
 	
 	<div id="account_management_container">
-		<div id="account_management_sidebar">
+		<div id="account_management_sidebar" class="col-xs-12 col-md-6">
 			Account Sidebar Area
 		</div>
 		
-		<div id="account_management_display_container">
+		<div id="account_management_display_container" class="col-xs-12 col-md-6">
 			Account Display Area
 		</div>
 	</div>

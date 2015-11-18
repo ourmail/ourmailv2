@@ -9,14 +9,14 @@ li{
 
 #account_management_sidebar {
 	display: inline-block;
-	width: 25%;
+	/*width: 25%;*/
 	/*border: 1px solid #000;*/
 }
 
 #account_management_display_container {
 	/*display: inline-block;*/
-	width: 50%;
-	border: 1px solid #000;
+	/*width: 50%;
+	border: 1px solid #000;*/
 }
 
 /*#email_dashboard_container {
@@ -30,4 +30,8 @@ li{
 #manageButton{
 	width:70px;
 
+}
+
+#signupForm{
+	/*width: */
 }
