@@ -39,7 +39,12 @@ li{
 
 #main_logo {
 	
-	padding-top: 80px;
+	padding-top: 65px;
+}
+
+body
+{
+	background-color: #E8E8E8;
 }
 
 /* This is some custom styling on the nav bar that is applied */
