@@ -75,7 +75,7 @@ function print_message($message,$unseen,$counter){
                         // <div class="hidden mailmessage">
                         //     $body
                         // </div>
-//EOT;
+//EOT;z
         // this is the html code for the email strip
         $message_html = "<tr><td>{$senderName}</td><td>Subject: {$subject}</td><td>{$sendDate}</td>";
         $message_html = $message_html."<td><button data-messageid='{$messageid}'' class='removemessage'> Delete </button></td>";
