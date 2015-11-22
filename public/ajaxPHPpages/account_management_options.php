@@ -7,6 +7,6 @@ if(!isset($_POST['accountManagement']) or ($_POST['accountManagement']) != true)
 ?>
 <ul>
 	<li class="list-group-item" id="mailbox_management_link"><a href="#">Manage Mailboxes</a></li>
-	<li class="list-group-item" id="account_setting_link"><a href="#">Change Acount Information</a></li>
+	<li class="list-group-item" id="account_setting_link"><a href="#">Change Account Information</a></li>
 	<li class="list-group-item" id="password_setting_link"><a href="#">Change Password</a></li>
 </ul>
