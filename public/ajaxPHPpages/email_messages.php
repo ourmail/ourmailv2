@@ -30,7 +30,7 @@ function print_message($message,$unseen,$counter){
 		$receiverEmail=$message['addresses']['to']['0']['email'];
 		$subject=$message['subject'];
 		$sendTimeSeconds=$message['date'];
-		$sendDate=date('Y/m/d H:i:s', $sendTimeSeconds);
+		$sendDate=date('M d, Y g:i a', $sendTimeSeconds);
 		$messageid=$message['message_id'];
 
 		if (count($message['body'])==2){
@@ -78,14 +78,14 @@ function print_message($message,$unseen,$counter){
 //EOT;z
         // this is the html code for the email strip
         $message_html = "<tr><td>{$senderName}</td><td>Subject: {$subject}</td><td>{$sendDate}</td>";
-        $message_html = $message_html."<td><button data-messageid='{$messageid}'' class='removemessage'> Delete </button></td>";
-        $message_html = $message_html."<td><a target='_blank' href='compose.php?to=$senderEmail&from=$receiverEmail'><button>Reply</button></a></td>";
-        $message_html = $message_html."<td><button data-messageid='{$messageid}' class='markread'> Mark as Read </button></td>";
+        $message_html = $message_html."<td><button data-messageid='{$messageid}'' class='removemessage btn btn-primary btn-md active'> Delete </button></td>";
+        $message_html = $message_html."<td><a target='_blank' href='compose.php?to=$senderEmail&from=$receiverEmail'><button class = 'btn btn-primary btn-md active'>Reply</button></a></td>";
+        $message_html = $message_html."<td><button data-messageid='{$messageid}' class='markread btn btn-primary btn-md active'> Mark as Read </button></td>";
 
         // this is the html code for the modal popup. 
         // Every modal object has a unique id so that only that message will pop up.
 
-        $message_html = $message_html."<td><button type='button' class='btn' data-toggle='modal' data-target= '#{$counter}'>View Email</button></td></tr>";
+        $message_html = $message_html."<td><button type='button' class='btn btn-primary btn-md active' data-toggle='modal' data-target= '#{$counter}'>View Email</button></td></tr>";
         $popup = create_message_popup($body, $subject, $counter); 
         
         return array($message_html, $popup);
