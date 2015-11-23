@@ -33,7 +33,8 @@ $(function() {
 
 		user.save(null, {
   			success: function() {
-    			 $('#savesuccess').css('display', 'block');
+    			$('#savesuccess').css('display', 'block');
+				$("#welcome_uname").html("Welcome " + username + " !");
   			},
   			error: function(user, error) {
   				console.log(error);

@@ -108,8 +108,12 @@ if(isset($_SESSION['recache'])){
 	<!-- CODE TO BE DISPLAYED UNDER ACCOUNTS TAB IN NAV BAR -->
 
 	<div id="account_management_container">
-		<div id="account_management_sidebar" class="col-xs-12 col-md-6">
-			Account Sidebar Area
+		<div id="account_management_sidebar" class="col-xs-12 col-md-3">
+			<ul>
+				<li class="list-group-item" id="account_setting_link"><a href="#">Change Account Information</a></li>
+				<li class="list-group-item" id="password_setting_link"><a href="#">Change Password</a></li>
+				<li class="list-group-item" id="mailbox_management_link"><a href="#">Manage Mailboxes</a></li>
+			</ul>
 		</div>
 		
 		<div id="account_management_display_container" class="col-xs-12 col-md-6">

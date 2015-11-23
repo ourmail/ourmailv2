@@ -104,3 +104,10 @@ body
 #signupForm{
 	/*width: */
 }
+
+.passwordResetContainer .status {
+	color: #339933;
+	display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+}

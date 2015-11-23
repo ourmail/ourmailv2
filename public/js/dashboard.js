@@ -79,7 +79,7 @@ $(function() {
         	type: 'POST',
             url: 'ajaxPHPpages/remove_message.php',
             data: myobject,
-            async: false,
+            async: true,
             success: function(data) {
 				console.log(data);
 				console.log("Remove successful");
@@ -106,7 +106,7 @@ $(function() {
         	type: 'POST',
             url: 'ajaxPHPpages/mark_read.php',
             data: myobject,
-            async: false,
+            async: true,
             success: function(data) {
 				console.log(data);
 				console.log("Mark read successful");
@@ -134,7 +134,7 @@ $(function() {
         	type: 'POST',
             url: 'ajaxPHPpages/remove_mailbox.php',
             data: myobject,
-            async: false,
+            async: true,
             success: function(data) {
 				console.log(data);
 				console.log("Remove successful");
@@ -149,7 +149,7 @@ $(function() {
 	
 	// ************* A C C O U N T   M A N A G E M E N T   D I S P L A Y *****************
 	
-	function displayOptions() {
+	/*function displayOptions() {
 		$.post('ajaxPHPpages/account_management_options.php', { 'accountManagement' : true }, function(data) {
 			if(data != "Failed to load options") {
 				$("#account_management_sidebar").html(data);				
@@ -158,7 +158,7 @@ $(function() {
 				console.log(data);
 			}			
 		});		
-	}
+	}*/
 	
 	function displayManagementForms(option) {
 		if(option == "manageMailboxes") {
@@ -184,23 +184,15 @@ $(function() {
 		}
 		else if(option == "passwordSettings") {
 			// Like above, but password reset page	var cur_user = Parse.User.current();
-
-			var currentUser = Parse.User.current();
-			var currentUserEmail = currentUser.get("email");
-
-			Parse.User.requestPasswordReset(currentUserEmail, {
-			success: function() {
-				 alert("Password reset instructions were successfully sent to your email address.");
-				 window.location.href = "main.php";
-				 return true;
-			},
-			error: function(error) {
-				// Show the error message somewhere
-				alert("Error: " + error.code + " " + error.message);
-				return false;
-			}
+			$.post('ajaxPHPpages/password_reset.php', { 'passwordReset' : true }, function(data) {
+				if(data != "Failed to load options") {
+					$("#account_management_display_container").html(data);
+					$(".passwordResetContainer .status").css("display", "none");
+				}
+				else {
+					console.log(data);
+				}			
 			});
-	
 		}
 	}	
 	
@@ -214,6 +206,23 @@ $(function() {
 	
 	$('body').on('click', '#password_setting_link', function() {
 		displayManagementForms("passwordSettings");
+	});
+	
+	$('body').on('click', '#passwordResetButton', function() {
+		var currentUser = Parse.User.current();
+		var currentUserEmail = currentUser.get("email");
+
+		Parse.User.requestPasswordReset(currentUserEmail, {
+			success: function() {
+				 $(".passwordResetContainer .status").css("display", "block");
+				 return true;
+			},
+			error: function(error) {
+				// Show the error message somewhere
+				console.log("Error: " + error.code + " " + error.message);
+				return false;
+			}
+		});
 	});
 	
 	// ************* T A B   F U N C T I O N A L I T Y *****************
@@ -241,7 +250,7 @@ $(function() {
 	displayFolders();
 	displayMessages("default", "default");
 	
-	displayOptions();
-	displayManagementForms("manageMailboxes");
+	//displayOptions();
+	displayManagementForms("accountSettings");
 	
 });

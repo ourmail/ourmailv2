@@ -14,7 +14,7 @@ $contextid=$_SESSION['contextid'];
 // This function creates a modal popup and returns it as an html object
 function create_message_popup($body, $subject , $counter)
 {
-    $message = "<div id= '{$counter}' class= 'modal fade' role= 'dialog'><div class= 'modal-dialog'><div class='modal-content'><div class='modal-header'>";
+    $message = "<div id='modal_{$counter}' class= 'modal fade' role= 'dialog'><div class= 'modal-dialog'><div class='modal-content'><div class='modal-header'>";
     $message = $message."<h4 class='modal-title'>{$subject}</h4></div><div class= 'modal-body'><p>{$body}</p></div><div class='modal-footer'>";
     $message = $message."<button type= 'button' class='btn btn-default' data-dismiss= 'modal'>Close</button></div></div></div></div>";
 
@@ -25,7 +25,13 @@ function create_message_popup($body, $subject , $counter)
 // This function takes in a message object and prints it to the screen
 function print_message($message,$unseen,$counter){
 	if(is_array($message)) {
-		$senderName=$message['addresses']['from']['name'];
+		if(isset($message['addresses']['from']['name'])) {
+			$senderName=$message['addresses']['from']['name'];
+		}
+		else {
+			$senderName=$message['addresses']['from']['email'];
+		}
+		
 		$senderEmail=$message['addresses']['from']['email'];
 		$receiverEmail=$message['addresses']['to']['0']['email'];
 		$subject=$message['subject'];
@@ -85,8 +91,8 @@ function print_message($message,$unseen,$counter){
         // this is the html code for the modal popup. 
         // Every modal object has a unique id so that only that message will pop up.
 
-        $message_html = $message_html."<td><button type='button' class='btn btn-primary btn-md active' data-toggle='modal' data-target= '#{$counter}'>View Email</button></td></tr>";
-        $popup = create_message_popup($body, $subject, $counter); 
+        $message_html = $message_html."<td><button type='button' class='btn btn-primary btn-md active' data-toggle='modal' data-target= '#modal_{$messageid}'>View Email</button></td></tr>";
+        $popup = create_message_popup($body, $subject, $messageid); 
         
         return array($message_html, $popup);
 
