@@ -69,11 +69,19 @@ body
 }
 
 .navbar-brand,
+.dropdown {
+    line-height: 75px;
+    height: 75px;
+    padding-top: 0px;
+}
+
+.navbar-brand,
 .navbar-nav li a {
     line-height: 75px;
     height: 75px;
     padding-top: 0;
 }
+
 
 /* the title*/
 .navbar-default .navbar-brand {

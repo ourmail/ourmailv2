@@ -69,8 +69,22 @@ if(isset($_SESSION['recache'])){
 					<ul class="nav navbar-nav ">
         				<li><a href="#" id= "main_button">Main</a></li>
         				<li><a href="#" id= "email_button">Email</a></li>
-        				<li><a href="#" id= "account_button">Account</a></li>  
+        				<li><a href="#" id= "account_button">Account</a></li> 
+
+        				<li>
+	        				<div class="dropdown">
+						    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Theme
+						    <span class="caret"></span></button>
+						    <ul class="dropdown-menu">	
+						      <li><a href="#" id= "redtheme" >Red</a></li>
+						      <li><a href="#" id= "greentheme">Green</a></li>
+						      <li><a href="#" id= "bluetheme">Blue</a></li>
+						    </ul>
+						  	</div>
+						</li>
       				</ul>
+
+					  	
 
 					<ul class="nav navbar-nav navbar-right">
         				<li><a href="#" id = "logout_button"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>

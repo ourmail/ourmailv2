@@ -245,6 +245,23 @@ $(function() {
 		$("#account_management_container").css('display', 'block');
 	});
 	
+	// ************* T H E M E  F U N C T I O N A L I T Y *****************
+
+	$("#redtheme").on('click', function() {
+		$("body").css("background-color", "red");
+		$(".navbar-default").css("background-color", "red");
+	});
+
+	$("#greentheme").on('click', function() {
+		$("body").css("background-color", "green");
+		$(".navbar-default").css("background-color", "green");	
+	});
+
+	$("#bluetheme").on('click', function() {
+		$("body").css("background-color", "blue");
+		$(".navbar-default").css("background-color", "blue");	
+	});
+
 	// ************* I N I T I A L   P A G E   S E T U P *****************
 	
 	displayFolders();
