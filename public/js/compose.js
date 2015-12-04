@@ -1,6 +1,8 @@
 $(function() {
-	
+	console.log("Hello World");
 	$("#compose").submit(function(event){
+		console.log("In the compose function");
+		
 		event.preventDefault();
 		
 		$from=$("#from").val();
