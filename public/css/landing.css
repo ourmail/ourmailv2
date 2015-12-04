@@ -464,30 +464,58 @@ footer .footer-below {
     background-color: #5AB5FF !important;
     border-color: #5AB5FF !important;
 }
-.dropdown-menu{
-    width: auto;
-}
+
+/* CSS for LOG IN dropdown menu */
 .dropdown-menu input{
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
 }
+.dropdown-header{
+    padding-left: 10px;
+}
+/* CSS for LOG IN form specific*/
+
 .dropdown-menu #loginSubmit{
 	float:left;
-    background-color: #5AB5FF !important;
+    background-color: #5AB5FF;
 	color: #FFFFFF;
 	border-color: #FFFFFF;
 	border-style: none;
 }
-.dropdown-header{
-    padding-left: 10px;
-}
-.dropdown .forgot-password{
+.dropdown #forgotPasswordLink{
     margin-left: 5px;
     margin-right: 5px;
-    margin-bottom: 5px;
 	color:#337ab7;
 	font-size: 10px;
 	text-transform: lowercase;
 	float: right;
+}
+
+/* CSS for Forget Password form specific*/
+.dropdown-menu #forgotPasswordForm{
+	display: none;
+}
+.dropdown-menu #forgotPasswordSubmit{
+	float:right;
+    background-color: #5AB5FF;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-style: none;
+}
+.dropdown #loginLink{
+    margin-left: 5px;
+    margin-right: 5px;
+	color:#337ab7;
+	font-size: 10px;
+	text-transform: lowercase;
+	float: left;
+}
+.dropdown #error{
+    margin-left: 5px;
+    margin-right: 5px;
+	color:#e60000;
+	font-size: auto;
+	text-transform: lowercase;
+	float: left;
 }

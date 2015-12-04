@@ -69,18 +69,26 @@ if(isset($_SESSION['userauth'])) {
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <form class="login" id="login">
+                            <form id="loginForm">
+								<span id="error"></span>
                                 <input type="text" id="loginUsername" placeholder="Username"> <!-- enter username -->
                                 <input type="password" id="loginPassword" placeholder="Password"> <!-- enter password -->
 								<input type="submit" id="loginSubmit" value="Log In">
-								<a href="#" class="forgot-password">Forgot Password</a>
-								</form>
+								<a href="#" id="forgotPasswordLink">Forgot Password</a>
+							</form>
 							<!-- for debug who is logged in
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Current User</li>
                             <div id="current-user"></div>
                             <button id="logout" type="submit" class="btn btn-success btn-lg">LogOut</button>
 							 -->
+							<form id="forgotPasswordForm">
+								<span id="error"></span>
+								<input type="text" id="forgotPasswordEmail" placeholder="Recover Email">
+								<input type="text" id="forgotPasswordSecurityAnswer" placeholder="Security Answer">
+								<input type="submit" id="forgotPasswordSubmit" value="Submit">
+								<a href="#" id="loginLink">Back to Login</a>
+							</form>
                         </ul>
                      </li>
                      <!-- ############################################### -->

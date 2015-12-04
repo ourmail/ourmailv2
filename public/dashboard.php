@@ -112,6 +112,7 @@ if(isset($_SESSION['recache'])){
 	<div id="email_dashboard_container">
 		<div id="email_folder_sidebar">
 			<!-- Email Sidebar Area -->
+			<li class="list-group-item" id="composeLink"><a href="#">Compose New Email</a></li>
 		</div>
 		
 		<div id="email_main_display_container">
