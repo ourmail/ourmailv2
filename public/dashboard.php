@@ -111,15 +111,27 @@ if(isset($_SESSION['recache'])){
 	<!-- CODE TO BE DISPLAYED UNDER EMAIL TAB IN NAV BAR -->
 
 	<div id="email_dashboard_container">
-		<div id="email_folder_sidebar">
+		<div id="email_folder_sidebar" class="col-xs-12 col-md-2">
 			<!-- Email Sidebar Area -->
 			<li class="list-group-item" id="composeLink"><a href="#" style= "font-family: 'Comfortaa', Arial;">Compose New Email</a></li>
 		</div>
 		
-		<div id="email_main_display_container">
+		<div id="email_main_display_container" class="col-xs-12 col-md-10">
 			<!-- Email Display Area -->
 		</div>
 	</div>
+	
+	<!-- CODE TO BE DISPLAYED UNDER EMAIL TAB IN BOTTOM NAV BAR -->
+		<nav id="bottomEmailNavbar" class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container-fluid">
+				<!-- Compose Email link -->
+				<ul class="nav navbar-nav navbar-right" data-toggle="modal" data-target="#composeModal">
+					<li><a href="#">Compose New Email</a></li>
+				</ul>
+
+				
+			</div>
+		</nav>
 	
 	<!-- CODE TO BE DISPLAYED UNDER ACCOUNTS TAB IN NAV BAR -->
 
@@ -136,6 +148,60 @@ if(isset($_SESSION['recache'])){
 			Account Display Area
 		</div>
 	</div>
+	
+	<!-- Modal -->
+				<div class="modal fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					<form id=compose>
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="composeModalLabel">Compose Email</h4>
+						</div>
+						<div class="modal-body">
+							<!-- Sender Email address Line -->
+							<div class="form-group">
+								<label>From:</label>
+								<select id='from' name='from' form="compose">
+									<?php
+										$imapinfo=$_SESSION['imapinfo'];
+										foreach($imapinfo as $account){
+											if ($account['email']==$from)
+												$selected="selected";
+											else
+												$selected="";
+											$output = <<<EOL
+											<option value="{$account['email']}" $selected>{$account['email']}</option>
+EOL;
+											echo $output;
+										}
+									?>
+								</select>
+							</div>
+							<!-- To Whom Line -->
+							<div class="form-group">
+								<label>To:</label>
+								<input type="text" class="form-control" id="to">
+							</div>
+							<!-- Subject Line -->
+							<div class="form-group">
+								<label>Subject:</label>
+								<input type="text" class="form-control" id=subject>
+							</div>
+							<!-- Message Box -->
+							<div class="form-group">
+								<label>Message:</label>
+								<textarea rows="10" cols="50" type="text" class="form-control" id="message"></textarea>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="submit" class="btn btn-primary" data-dismiss="modal">Send</button>
+						</div>
+					</form>
+					</div>
+				  </div>
+				</div>
 	
 </body>
 <html>
