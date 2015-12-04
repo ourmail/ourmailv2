@@ -19,22 +19,24 @@ li{
 }*/
 
 #main_dashboard_container {
-	display: block;
+	display: none;
 }
 
 #email_dashboard_container {
-	display: none;
+	display: block;
 }
 
 #account_management_container {
 	display: none;
 }
 
-#welcome_uname {
-	
-	padding-top: 35px;
+#bottomEmailNavbar {
+	display: block;
+}
+
+#currentUserName {
 	font-family: 'Comfortaa', Arial;
-	font-size: 35px;
+	margin-right: 10px;
 }
 
 #main_logo {

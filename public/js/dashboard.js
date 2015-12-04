@@ -18,8 +18,8 @@ $(function() {
 	});	
 	
 	// ************* M A I N   D I S P L A Y  W E L C O M E  M E S S A G E*****************
-	var userTest = Parse.User.current();
-	document.getElementById("welcome_uname").innerHTML = "Welcome " + userTest.get("username") + " !";
+	var currentUser = Parse.User.current();
+	document.getElementById("currentUserName").innerHTML = currentUser.get("username");
 	
 	// ************* E M A I L   D I S P L A Y *****************
 	
@@ -224,25 +224,32 @@ $(function() {
 			}
 		});
 	});
+
+	$('body').on('click', '#theme_link', function() {
+		var currentUser = Parse.User.current();
+	});
 	
 	// ************* T A B   F U N C T I O N A L I T Y *****************
-	
+	/*
 	$("#main_button").on('click', function() {
 		$("#main_dashboard_container").css('display', 'block');
 		$("#email_dashboard_container").css('display', 'none');
 		$("#account_management_container").css('display', 'none');
+		$("#bottomEmailNavbar").css('display', 'none');
 	});
-
+	*/
 	$("#email_button").on('click', function() {
-		$("#main_dashboard_container").css('display', 'none');
+		//$("#main_dashboard_container").css('display', 'none');
 		$("#email_dashboard_container").css('display', 'block');
 		$("#account_management_container").css('display', 'none');
+		$("#bottomEmailNavbar").css('display', 'block');
 	});
 	
 	$("#account_button").on('click', function() {
-		$("#main_dashboard_container").css('display', 'none');
+		//$("#main_dashboard_container").css('display', 'none');
 		$("#email_dashboard_container").css('display', 'none');
 		$("#account_management_container").css('display', 'block');
+		$("#bottomEmailNavbar").css('display', 'none');
 	});
 	
 	// ************* T H E M E  F U N C T I O N A L I T Y *****************
