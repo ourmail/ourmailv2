@@ -63,7 +63,8 @@ EOL;
 echo $output;
       ?>
 			<input id='subject' type="text" placeholder="Subject">
-			<input id='message' type="text" placeholder="Message">
+      <!-- <input id='' type="text" placeholder="Message"> -->
+			<textarea id='message' type="text" placeholder="Message"></textarea>
 			<button type="submit" id="sendmail">Send</button>
 		</form>
 	</div>
@@ -71,9 +72,6 @@ echo $output;
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
      <script src="js/compose.js"></script>
-
-    
-    
     
   </body>
 </html>
