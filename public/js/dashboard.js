@@ -265,7 +265,50 @@ $(function() {
 		$("body").css("background-color", "blue");
 		$(".navbar-default").css("background-color", "blue");	
 	});
-
+	
+	$("body").on('click', '#send_email', function(event){
+		event.preventDefault();
+		
+		var from=$("#from").val();
+		var to=$("#to").val();
+		var subject=$("#subject").val();
+		var message=$("#message").val();
+		
+		console.log("Attempting to send message.")
+		console.log(from);
+		console.log(to);
+		console.log(subject);
+		console.log(message);
+		
+		
+  		$.ajax({
+   			type: "POST",
+    		url: "https://mandrillapp.com/api/1.0/messages/send.json",
+    		data: {
+      			'key': 'bMm6MYko9E4ayLNZ60pJoQ',
+      			'message': {
+        			'from_email': from,
+        			'to': [
+          				{
+            				'email': to,
+          				}
+        			],
+        			'subject': subject,
+        			'html': message
+      			}
+    		},
+			async: true,
+			success: function(data) {
+				console.log(data);
+				console.log("Send Successful");
+            },
+			error: function(error){
+				console.log("Could not send Message");
+			}
+  		});
+	});
+	
+	
 	// ************* I N I T I A L   P A G E   S E T U P *****************
 	
 	displayFolders();

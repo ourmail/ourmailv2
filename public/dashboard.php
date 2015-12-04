@@ -49,8 +49,6 @@ if(isset($_SESSION['recache'])){
 
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
 
-	<script src="js/compose.js"></script>
-
 </head>
 
 <body>
@@ -151,58 +149,58 @@ if(isset($_SESSION['recache'])){
 	</div>
 	
 	<!-- Modal -->
-				<div class="modal fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel">
-				  <div class="modal-dialog" role="document">
-					<div class="modal-content">
-					<form id="compose">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="composeModalLabel">Compose Email</h4>
-						</div>
-						<div class="modal-body">
-							<!-- Sender Email address Line -->
-							<div class="form-group">
-								<label>From:</label>
-								<select id='from' name='from' form="compose">
-									<?php
-										$imapinfo=$_SESSION['imapinfo'];
-										foreach($imapinfo as $account){
-											if ($account['email']==$from)
-												$selected="selected";
-											else
-												$selected="";
-											$output = <<<EOL
-											<option value="{$account['email']}" $selected>{$account['email']}</option>
+	<div class="modal fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<form id="compose">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="composeModalLabel">Compose Email</h4>
+			</div>
+			<div class="modal-body">
+				<!-- Sender Email address Line -->
+				<div class="form-group">
+					<label>From:</label>
+					<select id='from' name='from' form="compose">
+						<?php
+							$imapinfo=$_SESSION['imapinfo'];
+							foreach($imapinfo as $account){
+								if ($account['email']==$from)
+									$selected="selected";
+								else
+									$selected="";
+								$output = <<<EOL
+								<option value="{$account['email']}" $selected>{$account['email']}</option>
 EOL;
-											echo $output;
-										}
-									?>
-								</select>
-							</div>
-							<!-- To Whom Line -->
-							<div class="form-group">
-								<label>To:</label>
-								<input type="text" class="form-control" id="to">
-							</div>
-							<!-- Subject Line -->
-							<div class="form-group">
-								<label>Subject:</label>
-								<input type="text" class="form-control" id=subject>
-							</div>
-							<!-- Message Box -->
-							<div class="form-group">
-								<label>Message:</label>
-								<textarea rows="10" cols="50" type="text" class="form-control" id="message"></textarea>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							<button type="submit" class="btn btn-primary" data-dismiss="modal">Send</button>
-						</div>
-					</form>
-					</div>
-				  </div>
+								echo $output;
+							}
+						?>
+					</select>
 				</div>
+				<!-- To Whom Line -->
+				<div class="form-group">
+					<label>To:</label>
+					<input type="text" class="form-control" id="to">
+				</div>
+				<!-- Subject Line -->
+				<div class="form-group">
+					<label>Subject:</label>
+					<input type="text" class="form-control" id="subject">
+				</div>
+				<!-- Message Box -->
+				<div class="form-group">
+					<label>Message:</label>
+					<textarea rows="10" cols="50" type="text" class="form-control" id="message"></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button id="send_email" class="btn btn-primary" data-dismiss="modal">Send</button>
+			</div>
+		</form>
+		</div>
+	  </div>
+	</div>
 	
 </body>
 <html>
