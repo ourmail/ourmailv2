@@ -84,7 +84,7 @@ if(isset($_SESSION['userauth'])) {
 						 </div>
 						 <div class="col-xs-12 col-md-6">
 						    <a href="" class="thumbnail">
-						      <img src="img/signuplogos/Hotmail.png" alt="...">
+						      <img src="img/signuplogos/hotmail.png" alt="...">
 						    </a>
 						 </div>
 						 <div class="col-xs-12 col-md-6">
@@ -94,7 +94,7 @@ if(isset($_SESSION['userauth'])) {
 						 </div>
 						 <div class="col-xs-12 col-md-6">
 						    <a href="" class="thumbnail">
-						      <img src="img/signuplogos/Yahoo.png" alt="...">
+						      <img src="img/signuplogos/yahoo.png" alt="...">
 						    </a>
 						 </div>
 					</div>			
