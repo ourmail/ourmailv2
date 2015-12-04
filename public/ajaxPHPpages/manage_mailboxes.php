@@ -6,7 +6,7 @@ if(!isset($_POST['manageMailboxes']) or ($_POST['manageMailboxes']) != true) {
 }
 ?>
 <div class="container">
-	<h1>Manage your mailboxes</h1>
+	<h1 style= "font-family: 'Comfortaa', Arial;">Manage your mailboxes</h1>
 	<br />
 	<ul>
 <?php
@@ -15,13 +15,13 @@ $imapinfo=$_SESSION['imapinfo'];
 foreach($imapinfo as $mailbox){
 $output = <<<EOL
 	<li  >
-		<button id = "manageButton" type="button" data-label="{$mailbox['label']}" class="remove">delete</button> <spin> {$mailbox['label']}</spin> 
+		<button id = "manageButton" type="button" data-label="{$mailbox['label']}" class="remove" style= "font-family: 'Comfortaa', Arial;">Delete</button> <spin> {$mailbox['label']}</spin> 
 	</li>
 EOL;
 echo $output;
 }		
 ?>			
-		<li id="addmailbox"> <a href="connect_token.php" target="_blank">Add new mailbox</a> </li>
+		<br><li id="addmailbox"> <a href="connect_token.php" target="_blank" style= "font-family: 'Comfortaa', Arial;">Add new mailbox</a> </li>
 	</ul>
 </div>
     
