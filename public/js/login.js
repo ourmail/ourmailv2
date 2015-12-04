@@ -21,7 +21,8 @@
 	displayCurrentUser();
 	*/
 	// ****************** L O G I N *************************
-	$("#login").submit(function(event) {
+	$("#loginForm").submit(function(event) {
+		console.log("trying to log in...");
 		if (Parse.User.current()) {
 			console.log("Logged in by "+Parse.User.current().get("username"));
 			Parse.User.logOut();
