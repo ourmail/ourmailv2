@@ -74,12 +74,12 @@ if(isset($_SESSION['recache'])){
 
         				<li>
 	        				<div class="dropdown">
-						    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Theme
+						    <button class="btn btn-primary dropdown-toggle" id = "theme" type="button" data-toggle="dropdown"> Theme
 						    <span class="caret"></span></button>
 						    <ul class="dropdown-menu">	
-						      <li><a href="#" id= "redtheme" >Red</a></li>
-						      <li><a href="#" id= "greentheme">Green</a></li>
-						      <li><a href="#" id= "bluetheme">Blue</a></li>
+						      <li><a href="#" id= "redtheme" style= "font-family: 'Comfortaa', Arial;">Red</a></li>
+						      <li><a href="#" id= "greentheme" style= "font-family: 'Comfortaa', Arial;">Green</a></li>
+						      <li><a href="#" id= "bluetheme" style= "font-family: 'Comfortaa', Arial;">Blue</a></li>
 						    </ul>
 						  	</div>
 						</li>
@@ -113,6 +113,7 @@ if(isset($_SESSION['recache'])){
 	<div id="email_dashboard_container">
 		<div id="email_folder_sidebar">
 			<!-- Email Sidebar Area -->
+			<li class="list-group-item" id="composeLink"><a href="#" style= "font-family: 'Comfortaa', Arial;">Compose New Email</a></li>
 		</div>
 		
 		<div id="email_main_display_container">
@@ -125,9 +126,9 @@ if(isset($_SESSION['recache'])){
 	<div id="account_management_container">
 		<div id="account_management_sidebar" class="col-xs-12 col-md-3">
 			<ul>
-				<li class="list-group-item" id="account_setting_link"><a href="#">Change Account Information</a></li>
-				<li class="list-group-item" id="password_setting_link"><a href="#">Change Password</a></li>
-				<li class="list-group-item" id="mailbox_management_link"><a href="#">Manage Mailboxes</a></li>
+				<li class="list-group-item" id="account_setting_link" style= "font-family: 'Comfortaa', Arial;"><a href="#">Change Account Information</a></li>
+				<li class="list-group-item" id="password_setting_link" style= "font-family: 'Comfortaa', Arial;"><a href="#">Change Password</a></li>
+				<li class="list-group-item" id="mailbox_management_link" style= "font-family: 'Comfortaa', Arial;"><a href="#">Manage Mailboxes</a></li>
 			</ul>
 		</div>
 		
