@@ -235,18 +235,22 @@ $(function() {
 		$("#main_dashboard_container").css('display', 'block');
 		$("#email_dashboard_container").css('display', 'none');
 		$("#account_management_container").css('display', 'none');
+		$("#bottomEmailNavbar").css('display', 'none');
 	});
 
 	$("#email_button").on('click', function() {
 		$("#main_dashboard_container").css('display', 'none');
 		$("#email_dashboard_container").css('display', 'block');
 		$("#account_management_container").css('display', 'none');
+		$("#bottomEmailNavbar").css('display', 'block');
 	});
 	
 	$("#account_button").on('click', function() {
 		$("#main_dashboard_container").css('display', 'none');
 		$("#email_dashboard_container").css('display', 'none');
 		$("#account_management_container").css('display', 'block');
+		$("#bottomEmailNavbar").css('display', 'none');
+
 	});
 	
 	// ************* T H E M E  F U N C T I O N A L I T Y *****************
