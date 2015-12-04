@@ -235,35 +235,56 @@ $(function() {
 		$("#main_dashboard_container").css('display', 'block');
 		$("#email_dashboard_container").css('display', 'none');
 		$("#account_management_container").css('display', 'none');
+		$("#bottomEmailNavbar").css('display', 'none');
 	});
 
 	$("#email_button").on('click', function() {
 		$("#main_dashboard_container").css('display', 'none');
 		$("#email_dashboard_container").css('display', 'block');
 		$("#account_management_container").css('display', 'none');
+		$("#bottomEmailNavbar").css('display', 'block');
 	});
 	
 	$("#account_button").on('click', function() {
 		$("#main_dashboard_container").css('display', 'none');
 		$("#email_dashboard_container").css('display', 'none');
 		$("#account_management_container").css('display', 'block');
+		$("#bottomEmailNavbar").css('display', 'none');
+
 	});
 	
 	// ************* T H E M E  F U N C T I O N A L I T Y *****************
 
+	$("#original").on('click', function() {
+		$("body").css("background-color", "#E8E8E8");
+		$(".navbar-default").css("background-color", "#3399CC");
+
+		$("#theme").css("background-color", "#3399CC");
+		$("#theme").css("border-color", "#3399CC");
+	});
+
 	$("#redtheme").on('click', function() {
-		$("body").css("background-color", "red");
-		$(".navbar-default").css("background-color", "red");
+		$("body").css("background-color", "#FFAAAA");
+		$(".navbar-default").css("background-color", "#AA3939");
+
+		$("#theme").css("background-color", "#AA3939");
+		$("#theme").css("border-color", "#AA3939");
 	});
 
 	$("#greentheme").on('click', function() {
-		$("body").css("background-color", "green");
-		$(".navbar-default").css("background-color", "green");	
+		$("body").css("background-color", "#92D18B");
+		$(".navbar-default").css("background-color", "#378B2E");
+
+		$("#theme").css("background-color", "#378B2E");
+		$("#theme").css("border-color", "#378B2E");
 	});
 
 	$("#bluetheme").on('click', function() {
-		$("body").css("background-color", "blue");
-		$(".navbar-default").css("background-color", "blue");	
+		$("body").css("background-color", "#7887AB");
+		$(".navbar-default").css("background-color", "#2E4172");
+
+		$("#theme").css("background-color", "#2E4172");
+		$("#theme").css("border-color", "#2E4172");	
 	});
 	
 	$("body").on('click', '#send_email', function(event){

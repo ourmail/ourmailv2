@@ -75,7 +75,8 @@ if(isset($_SESSION['recache'])){
 	        				<div class="dropdown">
 						    <button class="btn btn-primary dropdown-toggle" id = "theme" type="button" data-toggle="dropdown"> Theme
 						    <span class="caret"></span></button>
-						    <ul class="dropdown-menu">	
+						    <ul class="dropdown-menu">
+						      <li><a href="#" id= "original" style= "font-family: 'Comfortaa', Arial;">Original</a></li>
 						      <li><a href="#" id= "redtheme" style= "font-family: 'Comfortaa', Arial;">Red</a></li>
 						      <li><a href="#" id= "greentheme" style= "font-family: 'Comfortaa', Arial;">Green</a></li>
 						      <li><a href="#" id= "bluetheme" style= "font-family: 'Comfortaa', Arial;">Blue</a></li>

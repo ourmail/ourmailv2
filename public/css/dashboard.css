@@ -30,6 +30,10 @@ li{
 	display: none;
 }
 
+#bottomEmailNavbar {
+	display: none;
+}
+
 #welcome_uname {
 	
 	padding-top: 35px;
