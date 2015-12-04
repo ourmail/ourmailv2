@@ -2,10 +2,11 @@
 
 session_start();
 
+/*
 if(!isset($_SESSION['userauth']) or ($_SESSION['userauth']) != true or !isset($_POST['emailMessages']) or $_POST['emailMessages'] != true) {
 	header("Location: /index.php");
 	die();
-}
+}*/
 
 $imapinfo=$_SESSION['imapinfo'];
 $contextid=$_SESSION['contextid'];
@@ -137,19 +138,43 @@ function get_messages_and_print($label,$folder){
     global $imapinfo;
     global $contextid;
 
-    // Get Unread Messages
+    //$start = microtime(true);
+    //echo "start:";
+    //echo $start;
+    //echo "<br />";
+   
+    // Get Messages
     $msgs=$ctxio->listMessagesBySourceAndFolder($contextid,array(
         'label' => $label,
         'folder' => $folder,
-        'include_body' => '1',
-        'flag_seen' => '0' 
+        'include_body' => '1'
     ));
+    //$end=microtime(true);
+    //echo "end:";
+    //echo $end;
+    //echo "<br />";
+    //echo "Elapsed time: ";
+    //echo $end - $start;
+
     if ($msgs === false) {
-        throw new exception("Unable to fetch messages");
+        //throw new exception("Unable to fetch messages");
+        echo "<p id = \"welcome_uname\" class = \"text-center\" >There are no messages</p>";
     }
-    $msgsd=$msgs->getData();
-    print_all_messages($msgsd,true);
+    else{
+        $msgsd=$msgs->getData();
+        if(count($msgsd) > 0) {
+		print_all_messages($msgsd);
+	   }
+	   else {
+		  echo 'Folder '.rawurldecode($folder).' is Empty<br>';
+	   }
+    }
+    //$total=microtime(true);
+    //echo "total:";
+    //echo $total - $start;
     
+    /*
+   
     // Get Read Messages
     $msgs=$ctxio->listMessagesBySourceAndFolder($contextid,array(
         'label' => $label,
@@ -166,7 +191,7 @@ function get_messages_and_print($label,$folder){
 	}
 	else {
 		echo 'Folder '.rawurldecode($folder).' is Empty<br>';
-	}
+	}*/
 }
 
 // This function fetches the new mailbox based on whats folder is selected by the user.

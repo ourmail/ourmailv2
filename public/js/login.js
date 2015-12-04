@@ -22,6 +22,11 @@
 	// ****************** L O G I N *************************
 	
 	$("#login").submit(function(event) {
+		if (Parse.User.current()) {
+			console.log("Logged in by "+Parse.User.current().get("username"));
+			Parse.User.logOut();
+			console.log("Logged out now");
+		}
 		event.preventDefault();
 		var user = new Parse.User();
 		user.set("username", $("#loginUsername").val());

@@ -8,6 +8,7 @@ if(!isset($_SESSION['userauth']) or ($_SESSION['userauth']) != true) {
 }
 
 if(isset($_SESSION['recache'])){
+	echo "Rechache was set";
 	header("Location: ajaxPHPpages/update_imap_info.php");
 	die();
 }
@@ -69,7 +70,7 @@ if(isset($_SESSION['recache'])){
 					<ul class="nav navbar-nav ">
         				<li><a href="#" id= "main_button">Main</a></li>
         				<li><a href="#" id= "email_button">Email</a></li>
-        				<li><a href="#" id= "account_button">Account</a></li> 
+        				<li><a href="#" id= "account_button">Account</a></li>
 
         				<li>
 	        				<div class="dropdown">

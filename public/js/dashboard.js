@@ -37,9 +37,13 @@ $(function() {
 	var currentFolder = "default";
 	function displayMessages(label, folder) {
 		currentFolder = folder;
+		console.log("label: "+ label);
+		console.log("folder: "+ folder);
+		console.log("Making POST request to email messages ");
 		$.post('ajaxPHPpages/email_messages.php', { 'emailMessages' : true, "label" : label, "folder" : folder }, function(data) {
 			if(data != "Failed to load folders") {
-				$("#email_main_display_container").html(data);				
+				$("#email_main_display_container").html(data);	
+				console.log("Displayed messages ");			
 			}
 			else {
 				console.log(data);
