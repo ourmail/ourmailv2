@@ -49,6 +49,7 @@ if(isset($_SESSION['recache'])){
 
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
 
+	<script src="js/compose.js"></script>
 
 </head>
 
@@ -153,7 +154,7 @@ if(isset($_SESSION['recache'])){
 				<div class="modal fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel">
 				  <div class="modal-dialog" role="document">
 					<div class="modal-content">
-					<form id=compose>
+					<form id="compose">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="composeModalLabel">Compose Email</h4>
